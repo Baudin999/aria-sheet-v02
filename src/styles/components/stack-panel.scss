@@ -1,0 +1,12 @@
+.stack-panel {
+  display: flex;
+  flex-direction: row;
+
+  & > *:first-child {
+    flex: 1 1;
+    padding-right: 1rem;
+  }
+  & > *:not(:first-child) {
+    flex: 0 1;
+  }
+}

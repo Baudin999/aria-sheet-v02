@@ -1,0 +1,30 @@
+.character-card {
+  $width: 200px;
+  min-width: $width;
+  flex-basis: $width;
+}
+
+.character-list-card {
+  position: relative;
+  .remove-character {
+    display: none;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    height: 1.5rem;
+    width: 1.5rem;
+    &:hover {
+      cursor: pointer;
+    }
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &:hover {
+    .remove-character {
+      display: block;
+    }
+  }
+}

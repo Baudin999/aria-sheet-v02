@@ -1,0 +1,30 @@
+@import "./../variables";
+
+.add-button {
+  height: 2rem;
+  width: 2rem;
+  color: $primary;
+  float: right;
+
+  &:hover {
+    cursor: pointer;
+  }
+  svg.svg-inline--fa {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.button-bar {
+  & > * {
+    margin-right: 1rem;
+  }
+  .btn {
+    float: right;
+    margin-top: 1rem;
+    .button-title {
+      display: inline-block;
+      margin-left: 0.75rem;
+    }
+  }
+}
