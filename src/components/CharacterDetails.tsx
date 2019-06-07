@@ -1,28 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Content } from "./snippets/Content";
-import { StackPanel } from "./snippets/StackPanel";
 
-const NoCharacterSelected = () => {
-  return <h1>No character selected</h1>;
-};
-
-const CharacterStatistics = ({ character }) => {
-  let { stats } = character;
-
-  return (
-    <div className="statistics">
-      <div className="statistic str">
-        <div className="value">{stats.str.race}</div>
-        <div className="total">{stats.str.race}</div>
-      </div>
-      <div className="statistic agi">{stats.agi.race}</div>
-      <div className="statistic inu">{stats.inu.race}</div>
-      <div className="statistic per">{stats.per.race}</div>
-      <div className="statistic cha">{stats.cha.race}</div>
-    </div>
-  );
-};
+// detail screens
+import { CharacterStatistics } from "./CharacterDetailsStats";
+import { CharacterSkills } from "./CharacterDetailsSkills";
+import { CharacterFeats } from "./CharacterDetailsFeats";
+import { CharacterResistances } from "./CharacterDetailsResistances";
+import { CharacterWeapons } from "./CharacterDetailsWeapons";
 
 class _CharacterDetails extends React.Component<any, any> {
   render() {
@@ -34,11 +19,13 @@ class _CharacterDetails extends React.Component<any, any> {
     return (
       <Content className="fixed">
         <div className="content">
-          <StackPanel>
-            <CharacterStatistics character={character} />
+          <CharacterStatistics character={character} />
+          <CharacterSkills character={character} />
+          <CharacterFeats character={character} />
+          <CharacterResistances character={character} />
+          <CharacterWeapons character={character} />
 
-            <pre>{JSON.stringify(character, null, 4)}</pre>
-          </StackPanel>
+          {/* <pre>{JSON.stringify(character, null, 4)}</pre> */}
         </div>
       </Content>
     );

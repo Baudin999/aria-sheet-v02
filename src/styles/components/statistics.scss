@@ -1,0 +1,18 @@
+.statistics {
+  position: absolute;
+  left: 0;
+  top: 100px;
+
+  .statistic {
+    position: relative;
+    .title {
+      padding: 3px;
+    }
+    .value {
+      font-size: 3em;
+    }
+
+    .total {
+    }
+  }
+}

@@ -7,7 +7,8 @@ import { Content } from "./snippets/Content";
 import { StackPanel } from "./snippets/StackPanel";
 import { saveCharacter } from "../redux/actions";
 import { uuid } from "../services/helpers";
-import { createCharacter } from "../services/characterCreating";
+import { calculateCharacter } from "../services/calculateCharacter";
+import { createCharacter } from "../services/createCharacter";
 
 const CharacterCard = ({ character }) => {
   return (
@@ -26,6 +27,7 @@ export class CharacterCreate extends React.Component<any, any> {
   submit = r => {
     // create a new character
     let newCharacter = createCharacter(r.formData);
+    newCharacter = calculateCharacter(newCharacter);
 
     // save the new character
     saveCharacter(newCharacter).then(() => {

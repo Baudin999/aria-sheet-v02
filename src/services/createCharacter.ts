@@ -4,14 +4,17 @@ export const createCharacter = template => {
   console.log(template);
   let newCharacter = {
     id: uuid(),
-    name: template.name
+    name: template.name,
+    xp: 0,
+    level: 0
   };
   createStatistics(newCharacter);
   createRace(template.race, newCharacter);
-  createProfession(template.race, newCharacter);
+  createProfession(template.profession, newCharacter);
   createSkills(newCharacter);
   createFeats(newCharacter);
   createResistances(newCharacter);
+  createGear(newCharacter);
   createWeapons(newCharacter);
   createSpecials(newCharacter);
   createSpells(newCharacter);
@@ -21,11 +24,11 @@ export const createCharacter = template => {
 
 const createStatistics = template => {
   template.stats = {
-    str: { title: "Strength", value: 0 },
-    agi: { title: "Agility", value: 0 },
-    inu: { title: "Intuition", value: 0 },
-    per: { title: "Perception", value: 0 },
-    cha: { title: "Charisma", value: 0 }
+    str: { title: "Strength", value: 0, gear: 0, weapons: 0, specials: 0 },
+    agi: { title: "Agility", value: 0, gear: 0, weapons: 0, specials: 0 },
+    inu: { title: "Intuition", value: 0, gear: 0, weapons: 0, specials: 0 },
+    per: { title: "Perception", value: 0, gear: 0, weapons: 0, specials: 0 },
+    cha: { title: "Charisma", value: 0, gear: 0, weapons: 0, specials: 0 }
   };
 };
 
@@ -108,11 +111,15 @@ const createSkills = template => {
     return {
       title: title,
       stat: stat,
+      gear: 0,
+      weapons: 0,
+      specials: 0,
       bought: false, // from 1d10 to 1d20
       skilled: false, // add statistic
       professional: false, // add level
       expert: false, // add expertise
       description: "1d10 + 0",
+      bonus: 0,
       xp: 0
     };
   };
@@ -151,12 +158,16 @@ const createFeats = template => {
   let createFeat = (title, factor = 1, prefix = "+", postfix = "") => {
     return {
       title: title,
+      rank: 0,
+      gear: 0,
+      weapons: 0,
+      specials: 0,
       factor: factor,
       prefix: prefix, // from 1d10 to 1d20
       postfix: postfix, // add statistic
       professional: false, // add level
       expert: false, // add expertise
-      description: "1d10 + 0",
+      description: "",
       xp: 0
     };
   };
@@ -166,15 +177,15 @@ const createFeats = template => {
     ["Stamina"]: createFeat("Stamina"),
     ["Crit"]: createFeat("Crit"),
     ["Crit DMG"]: createFeat("Crit DMG"),
-    ["Splash"]: createFeat("Splash"),
+    ["Splash"]: createFeat("Splash", 20, "", "%"),
     ["Spash DMG"]: createFeat("Spash DMG"),
     ["Expertise"]: createFeat("Expertise"),
-    ["Movement"]: createFeat("Movement"),
-    ["Extra Attack"]: createFeat("Extra Attack"),
+    ["Movement"]: createFeat("Movement", 2),
+    ["Extra Attack"]: createFeat("Extra Attack", 20, "", "%"),
     ["Armor"]: createFeat("Armor"),
     ["Aura"]: createFeat("Aura"),
-    ["Directed Strike"]: createFeat("Directed Strike"),
-    ["Initiative"]: createFeat("Initiative"),
+    ["Directed Strike"]: createFeat("Directed Strike", null, ""),
+    ["Initiative"]: createFeat("Initiative", 2),
     ["AP"]: createFeat("AP")
   };
 };
@@ -184,16 +195,20 @@ const createResistances = template => {
     return {
       title: title,
       stat: stat,
+      gear: 0,
+      weapons: 0,
+      specials: 0,
       bought: false, // from 1d10 to 1d20
       skilled: false, // add statistic
       professional: false, // add level
       expert: false, // add expertise
       description: "1d10 + 0",
+      bonus: 0,
       xp: 0
     };
   };
 
-  template.feats = {
+  template.resistances = {
     ["Ice & Cold"]: createResistance("Ice & Cold", "AGI"),
     ["Fire & Heat"]: createResistance("Fire & Heat", "STR"),
     ["Holy"]: createResistance("Holy", "CHA"),
@@ -206,8 +221,22 @@ const createResistances = template => {
   };
 };
 
+const createGear = template => {
+  template.gear = [{ title: "Cloth", active: true, Movement: 0, Armor: 0 }];
+};
+
 const createWeapons = template => {
-  template.weapons = [{ title: "Dagger", numberOfDice: 1, diceSides: 4, constant: 1 }];
+  template.weapons = [
+    {
+      title: "Dagger",
+      type: "Melee",
+      stat: "str",
+      active: true,
+      numberOfDice: 1,
+      diceSides: 4,
+      constant: 1
+    }
+  ];
 };
 
 const createSpecials = template => {
