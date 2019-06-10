@@ -165,30 +165,31 @@ const createSkills = template => {
   template.skills = {
     ["Weapon Skill"]: createSkill("Weapon Skill", "str"),
     ["Unarmed Combat"]: createSkill("Unarmed Combat", "str"),
-    ["Dodge"]: createSkill("Dodge", "str"),
-    ["Ballistic Skill"]: createSkill("Ballistic Skill", "str"),
-    ["Tactics"]: createSkill("Tactics", "str"),
-    ["Acrobatics"]: createSkill("Acrobatics", "str"),
-    ["Magic Skill"]: createSkill("Magic Skill", "str"),
-    ["Arcane Lore"]: createSkill("Arcane Lore", "str"),
-    ["Religious Magic"]: createSkill("Religious Magic", "str"),
-    ["Religion"]: createSkill("Religion", "str"),
-    ["History"]: createSkill("History", "str"),
-    ["Animal Handler"]: createSkill("Animal Handler", "str"),
-    ["Insight"]: createSkill("Insight", "str"),
-    ["Slight of Hand"]: createSkill("Slight of Hand", "str"),
-    ["Deception"]: createSkill("Deception", "str"),
-    ["Charm"]: createSkill("Charm", "str"),
-    ["Interrogate"]: createSkill("Interrogate", "str"),
-    ["Haggle"]: createSkill("Haggle", "str"),
-    ["Stealth"]: createSkill("Stealth", "str"),
-    ["Guard"]: createSkill("Guard", "str"),
-    ["Law"]: createSkill("Law", "str"),
-    ["Wilderness Surv"]: createSkill("Wilderness Surv.", "str"),
-    ["Concoct Poison"]: createSkill("Concoct Poison", "str"),
-    ["Medicine"]: createSkill("Medicine", "str"),
-    ["Language"]: createSkill("Language", "str"),
-    ["Culture"]: createSkill("Culture", "str")
+    ["Defense"]: createSkill("Defense", "str"),
+    ["Dodge"]: createSkill("Dodge", "agi"),
+    ["Ballistic Skill"]: createSkill("Ballistic Skill", "agi"),
+    ["Tactics"]: createSkill("Tactics", "inu"),
+    ["Acrobatics"]: createSkill("Acrobatics", "agi"),
+    ["Magic Skill"]: createSkill("Magic Skill", "inu"),
+    ["Arcane Lore"]: createSkill("Arcane Lore", "inu"),
+    ["Religious Magic"]: createSkill("Religious Magic", "inu"),
+    ["Religion"]: createSkill("Religion", "cha"),
+    ["History"]: createSkill("History", "inu"),
+    ["Animal Handler"]: createSkill("Animal Handler", "cha"),
+    ["Insight"]: createSkill("Insight", "per"),
+    ["Slight of Hand"]: createSkill("Slight of Hand", "agi"),
+    ["Deception"]: createSkill("Deception", "inu"),
+    ["Charm"]: createSkill("Charm", "cha"),
+    ["Interrogate"]: createSkill("Interrogate", "cha"),
+    ["Haggle"]: createSkill("Haggle", "cha"),
+    ["Stealth"]: createSkill("Stealth", "agi"),
+    ["Guard"]: createSkill("Guard", "per"),
+    ["Law"]: createSkill("Law", "inu"),
+    ["Wilderness Surv"]: createSkill("Wilderness Surv.", "per"),
+    ["Concoct Poison"]: createSkill("Concoct Poison", "agi"),
+    ["Medicine"]: createSkill("Medicine", "inu"),
+    ["Language"]: createSkill("Language", "inu"),
+    ["Culture"]: createSkill("Culture", "inu")
   };
 };
 
@@ -245,15 +246,15 @@ const createResistances = template => {
   };
 
   template.resistances = {
-    ["Ice & Cold"]: createResistance("Ice & Cold", "AGI"),
-    ["Fire & Heat"]: createResistance("Fire & Heat", "STR"),
-    ["Holy"]: createResistance("Holy", "CHA"),
-    ["Death"]: createResistance("Death", "STR"),
-    ["Radiant"]: createResistance("Radiant", "PER"),
-    ["Poison"]: createResistance("Poison", "STR"),
-    ["Disease"]: createResistance("Disease", "STR"),
-    ["Illusion"]: createResistance("Illusion", "PER"),
-    ["Mental"]: createResistance("Mental", "INU")
+    ["Ice & Cold"]: createResistance("Ice & Cold", "agi"),
+    ["Fire & Heat"]: createResistance("Fire & Heat", "str"),
+    ["Holy"]: createResistance("Holy", "cha"),
+    ["Death"]: createResistance("Death", "str"),
+    ["Radiant"]: createResistance("Radiant", "per"),
+    ["Poison"]: createResistance("Poison", "str"),
+    ["Disease"]: createResistance("Disease", "str"),
+    ["Illusion"]: createResistance("Illusion", "per"),
+    ["Mental"]: createResistance("Mental", "inu")
   };
 };
 

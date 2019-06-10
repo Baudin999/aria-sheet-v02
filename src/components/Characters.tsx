@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCharacters, deleteCharacter } from "../redux/actions";
+import { getCharacters, deleteCharacter, selectCharacter } from "../redux/actions";
 import { ICharacter } from "../interfaces";
 import { AddButton } from "./snippets/AddButton";
 
@@ -13,8 +13,8 @@ const CharacterListCard = ({ character }) => {
           <Link to={`/character/${character.name}`}>{character.name}</Link>
         </h2>
         <h3>
-          {character.profession.name}
-          {character.specialization && ` - ${character.specialization}`}
+          {character.race.name} - {character.profession.name} - {character.xp} XP - lvl{" "}
+          {character.level}
         </h3>
         <div>
           {Object.keys(character.statistics || {})

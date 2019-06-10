@@ -19,10 +19,28 @@ export const reducer = (state = defaultState, action) => {
         characters: action.payload
       };
     case "CHARACTER_CREATED":
-      return {
-        ...state,
-        characters: [...(state.characters || []), action.payload]
-      };
+      let found = false;
+      let characters = (state.characters || []).map(c => {
+        if (c.name === action.payload.name) {
+          found = true;
+          return action.payload;
+        } else {
+          return c;
+        }
+      });
+      if (found) {
+        return {
+          ...state,
+          characters,
+          selectedCharacter: action.payload
+        };
+      } else {
+        return {
+          ...state,
+          characters: [...(state.characters || []), action.payload],
+          selectedCharacter: action.payload
+        };
+      }
     case "CHARACTER_DELETED":
       return {
         ...state,
@@ -31,7 +49,7 @@ export const reducer = (state = defaultState, action) => {
     case "CHARACTER_SELECTED":
       return {
         ...state,
-        selectedCharacter: (state.characters || []).find(c => c.name === action.payload)
+        selectedCharacter: action.payload
       };
     default:
       return state;

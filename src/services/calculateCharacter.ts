@@ -122,7 +122,7 @@ export const calculateCharacter = character => {
   for (let key in character.skills) {
     let skill = character.skills[key];
     if (skill.skilled) {
-      skill.bonus += character.stats[skill.stat].total;
+      skill.bonus += character.stats[skill.stat].result;
     }
     if (skill.professional) {
       skill.bonus += character.level;
@@ -130,13 +130,13 @@ export const calculateCharacter = character => {
     if (skill.expert) {
       skill.bonus += character.feats["Expertise"].totalRank;
     }
-    skill.description = skill.bought ? `1d20 + ${skill.bonus}` : `1d10`;
+    skill.description = skill.bought ? `1d20 + ${skill.bonus}` : `1d10 + 0`;
   }
 
   for (let key in character.resistances) {
     let resistance = character.resistances[key];
     if (resistance.skilled) {
-      resistance.bonus += character.stats[resistance.stat].total;
+      resistance.bonus += character.stats[resistance.stat].result;
     }
     if (resistance.professional) {
       resistance.bonus += character.level;
@@ -144,7 +144,7 @@ export const calculateCharacter = character => {
     if (resistance.expert) {
       resistance.bonus += character.feats["Expertise"].totalRank;
     }
-    resistance.description = resistance.bought ? `1d20 + ${resistance.bonus}` : `1d10`;
+    resistance.description = resistance.bought ? `1d20 + ${resistance.bonus}` : `1d10 + 0`;
   }
 
   // UPDATE WEAPON DESCRIPTION

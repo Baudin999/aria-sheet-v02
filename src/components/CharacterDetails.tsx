@@ -14,13 +14,23 @@ import { CharacterDetailsRace } from "./CharacterDetailsRace";
 import { CharacterDetailsProfession } from "./CharacterDetailsProfession";
 import { CharacterDetailsXP } from "./CharacterDetailsXP";
 import { CharacterDetailsLevel } from "./CharacterDetailsLevel";
+import { selectCharacter } from "../redux/actions";
 
 class _CharacterDetails extends React.Component<any, any> {
   render() {
     if (!this.props.characters) return null;
 
     let characterName = this.props.match.params.name;
-    let character = this.props.characters.find(c => c.name === characterName);
+    if (!this.props.selectedCharacter || this.props.selectedCharacter.name !== characterName) {
+      let character = this.props.characters.find(c => c.name === characterName);
+      selectCharacter(character);
+      return null;
+    }
+
+    let character = this.props.selectedCharacter;
+
+    // if (character.name !== this.props.selectedCha)
+    // selectCharacter(character);
 
     return (
       <div className="page">

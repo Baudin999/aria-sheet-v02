@@ -90,9 +90,9 @@ export const deleteCharacter = character => () => {
     });
 };
 
-export const selectCharacter = (name: string) => {
+export const selectCharacter = character => {
   dispatch({
     type: Events.CHARACTER_SELECTED,
-    payload: name
+    payload: character
   });
 };

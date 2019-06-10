@@ -5,7 +5,7 @@ import { StackPanel } from "./snippets/StackPanel";
 import { calculateCharacter } from "../services/calculateCharacter";
 import { saveCharacter } from "../redux/actions";
 
-class _EditFeats extends React.Component<any, any> {
+class _EditResistances extends React.Component<any, any> {
   state = { character: null };
   componentDidMount = () => {
     let character;
@@ -20,11 +20,10 @@ class _EditFeats extends React.Component<any, any> {
       character: JSON.parse(JSON.stringify(character))
     });
   };
-  submit = ({ formData }) => {};
 
-  changeRank = title => e => {
-    let value = +e.target.value;
-    this.state.character.feats[title].rank = value;
+  changeRank = (title, prop) => e => {
+    let value = e.target.checked;
+    this.state.character.resistances[title][prop] = value;
     let newCharacter = calculateCharacter(this.state.character);
     saveCharacter(newCharacter);
     this.setState({
@@ -46,32 +45,50 @@ class _EditFeats extends React.Component<any, any> {
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Rank</th>
-                <th>Gear</th>
-                <th>Weapons</th>
-                <th>Specials</th>
+                <th>Bought</th>
+                <th>Skilled</th>
+                <th>Professional</th>
+                <th>Expert</th>
                 <th>XP</th>
                 <th>Description</th>
               </tr>
             </thead>
             <tbody>
-              {Object.keys(character.feats).map(key => {
-                let feat = character.feats[key];
+              {Object.keys(character.resistances).map(key => {
+                let resistances = character.resistances[key];
                 return (
                   <tr key={key}>
-                    <td>{feat.title}</td>
+                    <td>{resistances.title}</td>
                     <td>
                       <input
-                        type="number"
-                        value={feat.rank}
-                        onChange={this.changeRank(feat.title)}
+                        type="checkbox"
+                        checked={resistances.bought}
+                        onChange={this.changeRank(resistances.title, "bought")}
                       />
                     </td>
-                    <td>{feat.gear}</td>
-                    <td>{feat.weapons}</td>
-                    <td>{feat.specials}</td>
-                    <td>{feat.xp}</td>
-                    <td>{feat.description}</td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={resistances.skilled}
+                        onChange={this.changeRank(resistances.title, "skilled")}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={resistances.professional}
+                        onChange={this.changeRank(resistances.title, "professional")}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={resistances.expert}
+                        onChange={this.changeRank(resistances.title, "expert")}
+                      />
+                    </td>
+                    <td>{resistances.xp}</td>
+                    <td>{resistances.description}</td>
                   </tr>
                 );
               })}
@@ -84,7 +101,7 @@ class _EditFeats extends React.Component<any, any> {
   }
 }
 
-export const EditFeats = connect(s => s)(_EditFeats);
+export const EditResistances = connect(s => s)(_EditResistances);
 
 {
   /* 

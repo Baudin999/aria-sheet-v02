@@ -38,13 +38,34 @@ export class Nav extends React.Component<INavProps> {
           <ul className="navbar-nav mr-auto">
             <$Link path="/" currentPath={path} text="Status" />
             <$Link path="/characters" currentPath={path} text="Characters" />
-            {selectedCharacter && (
-              <$Link
-                path={`/character/${selectedCharacter.name}`}
-                currentPath={path}
-                text={selectedCharacter.name}
-              />
-            )}
+            {selectedCharacter
+              ? [
+                  <$Link
+                    key="details"
+                    path={`/character/${selectedCharacter.name}`}
+                    currentPath={path}
+                    text={selectedCharacter.name}
+                  />,
+                  <$Link
+                    key="skills"
+                    path={`/character/${selectedCharacter.name}/skills`}
+                    currentPath={path}
+                    text="Skills"
+                  />,
+                  <$Link
+                    key="feats"
+                    path={`/character/${selectedCharacter.name}/feats`}
+                    currentPath={path}
+                    text="Feats"
+                  />,
+                  <$Link
+                    key="resistances"
+                    path={`/character/${selectedCharacter.name}/resistances`}
+                    currentPath={path}
+                    text="Resistances"
+                  />
+                ]
+              : null}
             <$Link path="/profile" currentPath={path} text="Profile" />
           </ul>
           <span className="email navbar-text" onClick={logout}>
