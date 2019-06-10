@@ -9,6 +9,7 @@ export const createCharacter = template => {
     level: 0
   };
   createStatistics(newCharacter);
+  createSecundaryStatistics(newCharacter);
   createRace(template.race, newCharacter);
   createProfession(template.profession, newCharacter);
   createSkills(newCharacter);
@@ -30,6 +31,18 @@ const createStatistics = template => {
     per: { title: "Perception", value: 0, gear: 0, weapons: 0, specials: 0 },
     cha: { title: "Charisma", value: 0, gear: 0, weapons: 0, specials: 0 }
   };
+};
+
+const createSecundaryStatistics = template => {
+  template.strFactor = 1;
+  template.hp = 25;
+  template.armor = 0;
+  template.aura = 0;
+  template.expertise = 0;
+  template.movement = 10;
+  template.initiative = 10;
+  template.initiativeModifier = 0;
+  template.ap = 3;
 };
 
 const createRace = (race, template) => {
@@ -64,6 +77,10 @@ const createRace = (race, template) => {
       break;
   }
 
+  template.race = {
+    name: race
+  };
+
   return template;
 };
 
@@ -85,6 +102,7 @@ const createProfession = (profession, template) => {
       template.stats.cha.prof = 0;
       break;
     case "barbarian":
+    case "slayer":
       template.stats.str.prof = 20;
       template.stats.agi.prof = 0;
       template.stats.inu.prof = 0;
@@ -101,7 +119,27 @@ const createProfession = (profession, template) => {
       template.stats.per.prof = 2;
       template.stats.cha.prof = 0;
       break;
+    default:
+      template.stats.str.prof = 8;
+      template.stats.agi.prof = 8;
+      template.stats.inu.prof = 8;
+      template.stats.per.prof = 8;
+      template.stats.cha.prof = 8;
+      break;
   }
+
+  switch (profession.toLowerCase()) {
+    case "barbarian":
+    case "defender":
+    case "cleric":
+    case "paladin":
+      template.strFactor = 2;
+      break;
+  }
+
+  template.profession = {
+    name: profession
+  };
 
   return template;
 };
@@ -163,10 +201,8 @@ const createFeats = template => {
       weapons: 0,
       specials: 0,
       factor: factor,
-      prefix: prefix, // from 1d10 to 1d20
-      postfix: postfix, // add statistic
-      professional: false, // add level
-      expert: false, // add expertise
+      prefix: prefix,
+      postfix: postfix,
       description: "",
       xp: 0
     };
@@ -184,7 +220,7 @@ const createFeats = template => {
     ["Extra Attack"]: createFeat("Extra Attack", 20, "", "%"),
     ["Armor"]: createFeat("Armor"),
     ["Aura"]: createFeat("Aura"),
-    ["Directed Strike"]: createFeat("Directed Strike", null, ""),
+    ["Directed Strike"]: createFeat("Directed Strike", 1, ""),
     ["Initiative"]: createFeat("Initiative", 2),
     ["AP"]: createFeat("AP")
   };

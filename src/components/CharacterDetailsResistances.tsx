@@ -1,10 +1,10 @@
 import * as React from "react";
 
-export const Resistance = ({ resistance }) => {
+const Resistance = ({ resistance }) => {
   return (
     <tr className="resistance str">
+      <td className="title">{resistance.stat}</td>
       <td className="title">{resistance.title}</td>
-      <td className="title">{resistance.rank || 0}</td>
       <td className="total">{resistance.description || "1d10 + 0"}</td>
     </tr>
   );

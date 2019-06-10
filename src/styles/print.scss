@@ -1,0 +1,23 @@
+@page {
+  margin: 0;
+}
+
+@media print {
+  .navbar {
+    display: none !important;
+  }
+  .footer {
+    display: none !important;
+  }
+
+  .page {
+    border: none !important;
+    .content {
+      border: none !important;
+      &.fixed {
+        margin-bottom: 0 !important;
+        page-break-after: always;
+      }
+    }
+  }
+}

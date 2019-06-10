@@ -9,6 +9,7 @@ import { CharacterCreate } from "./CharacterCreate";
 import { CharacterDetails } from "./CharacterDetails";
 import { Login } from "./Login";
 import { CreateAccount } from "./CreateAccount";
+import { EditFeats } from "./EditFeats";
 
 const Status = () => {
   return <div>Status</div>;
@@ -30,15 +31,14 @@ class $Home extends React.Component<IState> {
     } else {
       return (
         <Router>
-          <div className="page">
-            <Nav email={user.email} selectedCharacter={selectedCharacter} />
-            <Route exact path="/" component={Status} />
-            <Route exact path="/characters" component={Characters} />
-            <Route exact path="/characters/create" component={CharacterCreate} />
-            <Route exact path="/character/:name" component={CharacterDetails} />
-            {/* <Redirect to="/" /> */}
-            <Footer />
-          </div>
+          <Nav email={user.email} selectedCharacter={selectedCharacter} />
+          <Route exact path="/" component={Status} />
+          <Route exact path="/characters" component={Characters} />
+          <Route exact path="/characters/create" component={CharacterCreate} />
+          <Route exact path="/character/:name" component={CharacterDetails} />
+          <Route exact path="/character/:name/feats" component={EditFeats} />
+          {/* <Redirect to="/" /> */}
+          <Footer />
         </Router>
       );
     }

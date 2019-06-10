@@ -8,6 +8,12 @@ import { CharacterSkills } from "./CharacterDetailsSkills";
 import { CharacterFeats } from "./CharacterDetailsFeats";
 import { CharacterResistances } from "./CharacterDetailsResistances";
 import { CharacterWeapons } from "./CharacterDetailsWeapons";
+import { CharacterDetailsSecundaryStats } from "./CharacterDetailsSecundaryStats";
+import { CharacterSpecials } from "./CharacterDetailsSpecials";
+import { CharacterDetailsRace } from "./CharacterDetailsRace";
+import { CharacterDetailsProfession } from "./CharacterDetailsProfession";
+import { CharacterDetailsXP } from "./CharacterDetailsXP";
+import { CharacterDetailsLevel } from "./CharacterDetailsLevel";
 
 class _CharacterDetails extends React.Component<any, any> {
   render() {
@@ -17,17 +23,25 @@ class _CharacterDetails extends React.Component<any, any> {
     let character = this.props.characters.find(c => c.name === characterName);
 
     return (
-      <Content className="fixed">
-        <div className="content">
+      <div className="page">
+        <Content className="fixed">
+          <div className="character-name">{characterName}</div>
+          <CharacterDetailsRace character={character} />
+          <CharacterDetailsProfession character={character} />
+          <CharacterDetailsXP character={character} />
+          <CharacterDetailsLevel character={character} />
+
           <CharacterStatistics character={character} />
+          <CharacterDetailsSecundaryStats character={character} />
           <CharacterSkills character={character} />
           <CharacterFeats character={character} />
           <CharacterResistances character={character} />
           <CharacterWeapons character={character} />
+          <CharacterSpecials character={character} />
+        </Content>
 
-          {/* <pre>{JSON.stringify(character, null, 4)}</pre> */}
-        </div>
-      </Content>
+        <Content className="fixed">Spells and stuff</Content>
+      </div>
     );
   }
 }

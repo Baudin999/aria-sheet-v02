@@ -1,7 +1,6 @@
 @import "./reset.scss";
-@import "./bootstrap.min.css";
 @import "./typography.scss";
-@import "./variables";
+@import "./color.scss";
 
 @import "./components/nav-bar.scss";
 @import "./components/buttons.scss";
@@ -16,7 +15,6 @@
 
 @import "./components/statistics.scss";
 @import "./components/skills.scss";
-@import "./components/feats.scss";
-@import "./components/resistances.scss";
 
 @import "./functional/character.scss";
+@import "./print.scss";

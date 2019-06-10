@@ -1,5 +1,82 @@
+@import "./page";
+
+.character-name {
+  position: absolute;
+  left: $col-1 + 30px;
+  top: $row-1;
+  font-size: 2rem;
+}
+.character-race,
+.character-profession,
+.character-xp,
+.character-level {
+  position: absolute;
+  left: 250px;
+  top: $row-1;
+  width: 200px;
+  & div {
+    padding: 3px 10px;
+  }
+  &-name {
+    border-bottom: 1px solid lightgray;
+    font-size: 1.3rem;
+  }
+}
+.character-profession {
+  left: 410px;
+}
+.character-xp {
+  left: 650px;
+  width: 45px;
+  div {
+    text-align: center;
+  }
+}
+.character-level {
+  left: 690px;
+  width: 45px;
+  div {
+    text-align: center;
+  }
+}
+
 .skills {
   position: absolute;
-  left: 100px;
-  top: 100px;
+  left: $col-2;
+  top: $row-3;
+}
+.feats {
+  position: absolute;
+  left: $col-3;
+  top: $row-3;
+}
+
+.resistances {
+  position: absolute;
+  left: $col-3;
+  top: $row-4;
+}
+
+.weapons.list {
+  border: none;
+  position: absolute;
+  left: $col-4;
+  top: $row-3;
+  width: 280px;
+
+  td:last-child {
+    text-align: left;
+  }
+}
+
+.specials.list {
+  border: none;
+  position: absolute;
+  left: $col-4;
+  top: 330px;
+  width: 280px;
+
+  td:last-child {
+    text-align: left;
+  }
 }

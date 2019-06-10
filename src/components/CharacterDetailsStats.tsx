@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const Statistic = ({ statistic }) => {
+const Statistic = ({ statistic }) => {
   return (
     <div className="statistic">
       <div className="title">{statistic.title}</div>

@@ -1,20 +1,29 @@
+$col-1: 10px;
+$col-2: 90px;
+$col-3: 285px;
+$col-4: 480px;
+
+$row-1: 20px; // title
+$row-2: 110px; // secudary stats
+$row-3: 170px; // lists
+$row-4: 476px; // lists
+
 .page {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   .content {
-    overflow: auto;
-    padding: 1rem;
+    width: 21cm;
+    height: 29.7cm;
+    border: 1px solid orange;
 
     &.fixed {
-      max-width: 780px;
-      width: 100%;
-      position: absolute;
+      position: relative;
       left: 50%;
       transform: translateX(-50%);
-      height: calc(100% - 4rem);
+      margin-bottom: 1rem;
+      page-break-after: always;
     }
   }
 }

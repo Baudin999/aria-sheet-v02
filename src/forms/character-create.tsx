@@ -22,7 +22,7 @@ export const schema = {
     },
     race: {
       type: "string",
-      enum: ["Human", "Elf", "Dwarf"],
+      enum: ["Human", "Elf", "Dwarf", "Indir"],
       title: "Race",
       default: "Human"
     },
@@ -33,12 +33,18 @@ export const schema = {
         "Defender",
         "Barbarian",
         "Paladin",
+        "Slayer",
         "Earth Mage",
         "Fire Mage",
         "Water Mage",
         "Air Mage",
         "Arcane Warrior",
-        "Monk"
+        "Monk",
+        "Priest",
+        "Cleric",
+        "Rogue",
+        "Dreamer",
+        "Shapeshifter"
       ],
       title: "Profession",
       default: "Warrior"

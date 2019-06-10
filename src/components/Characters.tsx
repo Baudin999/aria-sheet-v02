@@ -13,7 +13,7 @@ const CharacterListCard = ({ character }) => {
           <Link to={`/character/${character.name}`}>{character.name}</Link>
         </h2>
         <h3>
-          {character.profession}
+          {character.profession.name}
           {character.specialization && ` - ${character.specialization}`}
         </h3>
         <div>

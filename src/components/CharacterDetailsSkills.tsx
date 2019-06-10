@@ -1,10 +1,10 @@
 import * as React from "react";
 
-export const Skill = ({ skill }) => {
+const Skill = ({ skill }) => {
   return (
     <tr className="skill str">
-      <td className="title">{skill.title}</td>
       <td className="title">{skill.stat.toUpperCase()}</td>
+      <td className="title">{skill.title}</td>
       <td className="total">{skill.description || "1d10 + 0"}</td>
     </tr>
   );

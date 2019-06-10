@@ -1,5 +1,16 @@
+@import "./../color";
+
 table.list {
-  border: 1px solid gray;
+  width: 182px;
+  border: 1px solid $primary;
+  thead {
+    tr {
+      th {
+        text-align: left;
+        border-bottom: 1px solid gray;
+      }
+    }
+  }
   tbody {
     tr {
       td:first-child {
@@ -7,7 +18,8 @@ table.list {
       }
 
       td:last-child {
-        padding-right: 5px;
+        padding-right: 10px;
+        text-align: right;
       }
     }
   }

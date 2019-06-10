@@ -1,10 +1,10 @@
 import * as React from "react";
 
-export const Feat = ({ feat }) => {
+const Feat = ({ feat }) => {
   return (
     <tr className="feat str">
-      <td className="title">{feat.title}</td>
       <td className="title">{feat.rank || 0}</td>
+      <td className="title">{feat.title}</td>
       <td className="total">{feat.description || "1d10 + 0"}</td>
     </tr>
   );

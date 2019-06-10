@@ -1,6 +1,7 @@
 export const calculateCharacter = character => {
-  // GEAR
+  character.xp = 0;
 
+  // GEAR
   character.gear
     .filter(g => g.active)
     .forEach(g => {
@@ -25,7 +26,7 @@ export const calculateCharacter = character => {
     });
 
   // SPECIALS
-  character.specials
+  (character.specials || [])
     .filter(g => g.active)
     .forEach(g => {
       for (var key in g) {
@@ -44,14 +45,24 @@ export const calculateCharacter = character => {
     stat.result = Math.round(stat.total / 10);
   }
 
+  // INATE HEALING
+  character.inateHealing =
+    character.stats.str.result * character.strFactor +
+    character.stats.agi.result +
+    character.stats.inu.result +
+    character.stats.per.result +
+    character.stats.cha.result;
+
   // FEATS
 
   for (let key in character.feats) {
+    //if (key === "Directed Strike") debugger;
     let feat = character.feats[key];
     feat.rank = feat.rank || 0;
     feat.totalRank = feat.rank + feat.gear + feat.weapons + feat.specials;
     feat.xp = xpLookup[feat.totalRank || 0];
     character.xp += feat.xp;
+    //console.log(key, feat.xp);
 
     // crit behaves differently
     if (feat.title === "Crit") {
@@ -59,10 +70,24 @@ export const calculateCharacter = character => {
       feat.description = `${feat.result}`;
     } else if (feat.title === "Crit DMG" || feat.title === "Spash DMG") {
       feat.result = feat.totalRank * feat.factor;
-      feat.description = `${feat.result - 1}d4`;
+      feat.description = `${feat.result}d4`;
     } else {
       feat.result = feat.totalRank * feat.factor;
       feat.description = `${feat.prefix}${feat.result}${feat.postfix}`;
+    }
+
+    switch (feat.title) {
+      case "Armor":
+        character.armor = feat.description;
+        break;
+      case "Aura":
+        character.aura = feat.description;
+        break;
+      case "AP":
+        character.ap = feat.description;
+      case "Movement":
+        character.movement = feat.description;
+        break;
     }
   }
 
@@ -74,6 +99,7 @@ export const calculateCharacter = character => {
     let rank = skill.expert ? 4 : skill.professional ? 3 : skill.skilled ? 2 : skill.bought ? 1 : 0;
     skill.xp = xpLookup[rank];
     character.xp += skill.xp;
+    //console.log(key, skill.xp);
   }
 
   // RESISTANCES
@@ -84,9 +110,14 @@ export const calculateCharacter = character => {
     let rank = r.expert ? 4 : r.professional ? 3 : r.skilled ? 2 : r.bought ? 1 : 0;
     r.xp = xpLookup[rank];
     character.xp += r.xp;
+    //console.log(key, r.xp);
   }
 
   character.level = levelLookup(character.xp);
+
+  character.hp = Math.round(
+    character.inateHealing * (character.feats.Stamina.result / 10 + 1) * character.level
+  );
 
   for (let key in character.skills) {
     let skill = character.skills[key];
