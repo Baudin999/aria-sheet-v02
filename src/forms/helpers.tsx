@@ -26,3 +26,5 @@ export function findSchemaDefinition($ref_original, definitions = {}) {
   }
   return current;
 }
+
+//export const changeStringField = ()

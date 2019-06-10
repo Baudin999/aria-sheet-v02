@@ -1,12 +1,25 @@
+@import "./../color.scss";
 .stack-panel {
   display: flex;
   flex-direction: row;
 
-  & > *:first-child {
-    flex: 1 1;
-    padding-right: 1rem;
+  & > * {
+    padding: 1rem;
   }
-  & > *:not(:first-child) {
-    flex: 0 1;
+
+  .master {
+    flex-basis: 250px;
+    width: 250px;
+
+    li {
+      padding: 5px;
+      &:hover {
+        cursor: pointer;
+        background: $info;
+      }
+    }
+  }
+  .details {
+    flex: 1;
   }
 }

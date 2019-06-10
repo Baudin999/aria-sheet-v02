@@ -12,6 +12,7 @@ import { CreateAccount } from "./CreateAccount";
 import { EditFeats } from "./EditFeats";
 import { EditSkills } from "./EditSkills";
 import { EditResistances } from "./EditResistances";
+import { EditWeapons } from "./EditWeapons";
 
 const Status = () => {
   return <div>Status</div>;
@@ -41,6 +42,7 @@ class $Home extends React.Component<IState> {
           <Route exact path="/character/:name/feats" component={EditFeats} />
           <Route exact path="/character/:name/skills" component={EditSkills} />
           <Route exact path="/character/:name/resistances" component={EditResistances} />
+          <Route exact path="/character/:name/weapons" component={EditWeapons} />
           {/* <Redirect to="/" /> */}
           <Footer />
         </Router>

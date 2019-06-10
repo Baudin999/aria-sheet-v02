@@ -265,13 +265,24 @@ const createGear = template => {
 const createWeapons = template => {
   template.weapons = [
     {
+      id: uuid(),
       title: "Dagger",
       type: "Melee",
       stat: "str",
       active: true,
       numberOfDice: 1,
       diceSides: 4,
-      constant: 1
+      constant: 1,
+      bonusses: [
+        { index: 0 },
+        { index: 1 },
+        { index: 2 },
+        { index: 3 },
+        { index: 4 },
+        { index: 5 },
+        { index: 6 },
+        { index: 7 }
+      ]
     }
   ];
 };
