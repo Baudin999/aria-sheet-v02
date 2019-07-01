@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const SkillDetails = ({ character }) => {
+export const ResistancesDetails = ({ character }) => {
   let Checked = ({ checked }) => {
     return checked ? (
       <FontAwesomeIcon color="hotpink" icon="check" />
@@ -11,28 +11,28 @@ export const SkillDetails = ({ character }) => {
   };
   let Details = () => (
     <tbody>
-      {Object.keys(character.skills).map(skillName => {
-        let skill = character.skills[skillName];
+      {Object.keys(character.resistances).map(resistanceName => {
+        let resistance = character.resistances[resistanceName];
         return (
-          <tr key={skillName}>
-            <td>{skill.title}</td>
-            <td>{skill.stat}</td>
-            <td style={{ textAlign: "center" }}>{skill.gear}</td>
-            <td style={{ textAlign: "center" }}>{skill.weapons}</td>
-            <td style={{ textAlign: "center" }}>{skill.specials}</td>
+          <tr key={resistanceName}>
+            <td>{resistance.title}</td>
+            <td>{resistance.stat}</td>
+            <td style={{ textAlign: "center" }}>{resistance.gear}</td>
+            <td style={{ textAlign: "center" }}>{resistance.weapons}</td>
+            <td style={{ textAlign: "center" }}>{resistance.specials}</td>
             <td style={{ textAlign: "center" }}>
-              <Checked checked={skill.bought} />
+              <Checked checked={resistance.bought} />
             </td>
             <td style={{ textAlign: "center" }}>
-              <Checked checked={skill.skilled} />
+              <Checked checked={resistance.skilled} />
             </td>
             <td style={{ textAlign: "center" }}>
-              <Checked checked={skill.professional} />
+              <Checked checked={resistance.professional} />
             </td>
             <td style={{ textAlign: "center" }}>
-              <Checked checked={skill.expert} />
+              <Checked checked={resistance.expert} />
             </td>
-            <td style={{ textAlign: "right" }}>{skill.description}</td>
+            <td style={{ textAlign: "right" }}>{resistance.description}</td>
           </tr>
         );
       })}

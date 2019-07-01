@@ -5,14 +5,14 @@ export const WeaponList = ({ weapons, addWeapon, selectWeapon }) => {
     <div className="master">
       <ul>
         {weapons.map(weapon => (
-          <li key={weapon.id} onClick={() => selectWeapon(weapon)}>
+          <li className="stand-out-1" key={weapon.id} onClick={() => selectWeapon(weapon)}>
             {weapon.title} - {weapon.description}
           </li>
         ))}
       </ul>
       <div className="button-bar">
-        <button type="button" onClick={addWeapon}>
-          Add
+        <button className="btn btn-info" type="button" onClick={addWeapon}>
+          Add Weapon
         </button>
       </div>
     </div>

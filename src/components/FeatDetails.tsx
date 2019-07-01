@@ -34,7 +34,7 @@ export const FeatDetails = ({ character }) => {
           <th style={{ textAlign: "center" }}>Specials</th>
           <th style={{ textAlign: "center" }}>Factor</th>
           <th style={{ textAlign: "center" }}>Total Rank</th>
-          <th style={{ textAlign: "right" }}>Description</th>
+          <th style={{ textAlign: "right" }}>.</th>
         </tr>
       </thead>
       <Details />

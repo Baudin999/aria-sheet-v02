@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Content } from "./snippets/Content";
 import { StackPanel } from "./snippets/StackPanel";
 import { calculateCharacter } from "../services/calculateCharacter";
-import { setCharacter, uuid } from "../services/helpers";
+import { setCharacter, uuid, debounce } from "../services/helpers";
 import { WeaponDetails } from "./WeaponDetails";
 import { WeaponList } from "./WeaponList";
 import { saveCharacter } from "../redux/actions";
@@ -38,7 +38,13 @@ class _EditWeapons extends React.Component<any, any> {
   };
 
   addWeapon = () => {
-    let newWeapon = { id: uuid(), title: "Dagger" };
+    let newWeapon = {
+      id: uuid(),
+      title: "Dagger",
+      description: "1d4+1",
+      type: "Melee",
+      stat: "str"
+    };
     this.setState({
       ...this.state,
       character: {
@@ -77,62 +83,3 @@ class _EditWeapons extends React.Component<any, any> {
 }
 
 export const EditWeapons = connect(s => s)(_EditWeapons);
-
-/*<div className="details">
-              <form>
-                <fieldset>
-                  <legend>Weapon Information</legend>
-                  <div className="field">
-                    <label>Title</label>
-                    <input value={selectedWeapon.title} onChange={this.changeTextField("title")} />
-                  </div>
-                  <div className="field">
-                    <label>Type</label>
-                    <select onChange={this.changeTextField("type")} value={selectedWeapon.type}>
-                      <option value="Melee">Melee</option>
-                      <option value="Ranged">Ranged</option>
-                      <option value="Magic">Magic</option>
-                      <option value="Fist">Fist</option>
-                      <option value="Shield">Shield</option>
-                    </select>
-                  </div>
-                  <div className="field">
-                    <label>Number of Dice</label>
-                    <input
-                      type="number"
-                      value={selectedWeapon.numberOfDice}
-                      onChange={this.changeNumberField("titnumberOfDicele")}
-                    />
-                  </div>
-                  <div className="field">
-                    <label>Dice Sides</label>
-                    <input
-                      type="number"
-                      value={selectedWeapon.diceSides}
-                      onChange={this.changeNumberField("diceSides")}
-                    />
-                  </div>
-                  <div className="field">
-                    <label>Constant</label>
-                    <input
-                      type="number"
-                      value={selectedWeapon.constant}
-                      onChange={this.changeNumberField("constant")}
-                    />
-                  </div>
-                  <div className="field">
-                    <label>Active</label>
-                    <input
-                      type="checkbox"
-                      value={selectedWeapon.active}
-                      onChange={this.changeBooleanField("active")}
-                    />
-                  </div>
-                </fieldset>
-                <fieldset>
-                  <legend>Bonusses</legend>
-                  <Bonusses weapon={selectedWeapon} character={character} />
-                </fieldset>
-              </form>
-            </div>
-*/

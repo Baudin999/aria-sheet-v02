@@ -11,7 +11,8 @@ export const WeaponsDetails = ({ character }) => {
     "constant",
     "active",
     "stat",
-    "type"
+    "type",
+    "notes"
   ];
   let Details = () => (
     <tbody>
@@ -20,13 +21,21 @@ export const WeaponsDetails = ({ character }) => {
         return (
           <tr key={weaponName}>
             <td>{weapon.title}</td>
+            <td>{weapon.stat}</td>
             <td>
               {Object.keys(weapon)
                 .filter(key => invalidKeys.indexOf(key) === -1)
-                .map(key => `${key}:${weapon[key]}`)
-                .join(", ")}
+                .map(key => (
+                  <span
+                    style={{ whiteSpace: "nowrap", display: "inline-block", marginRight: "5px" }}>
+                    {key}:{weapon[key]}
+                  </span>
+                ))}
+              <div>
+                DMG: {weapon.numberOfDice}d{weapon.diceSides}+{weapon.constant} + Stat:
+                {character.stats[weapon.stat].result} + DMG:{character.feats.DMG.description}
+              </div>
             </td>
-            <td style={{ textAlign: "right" }}>{weapon.description}</td>
           </tr>
         );
       })}
@@ -38,8 +47,8 @@ export const WeaponsDetails = ({ character }) => {
       <thead>
         <tr>
           <th>Title</th>
+          <th>Stat</th>
           <th>Bonusses</th>
-          <th style={{ textAlign: "right" }}>Description</th>
         </tr>
       </thead>
       <Details />

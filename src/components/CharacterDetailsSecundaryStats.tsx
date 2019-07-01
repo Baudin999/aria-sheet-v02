@@ -22,6 +22,7 @@ export const CharacterDetailsSecundaryStats = ({ character }) => {
       <Statistic title="Initiative" value={character.initiative} />
       <Statistic title="Ini Modif." value={character.initiativeModifier} />
       <Statistic title="AP" value={character.ap} />
+      <Statistic title="In. Heal." value={character.inateHealing} />
     </div>
   );
 };

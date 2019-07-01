@@ -19,6 +19,7 @@ import { FeatDetails } from "./FeatDetails";
 import { SkillDetails } from "./SkillDetails";
 import { StatDetails } from "./StatDetails";
 import { WeaponsDetails } from "./WeaponsDetails";
+import { ResistancesDetails } from "./ResistancesDetails";
 
 class _CharacterDetails extends React.Component<any, any> {
   render() {
@@ -57,20 +58,34 @@ class _CharacterDetails extends React.Component<any, any> {
         <Content className="fixed">Spells and stuff</Content>
 
         <Content className="fixed" style={{ padding: "2rem" }}>
-          <div style={{ width: "45%", float: "left" }}>
-            <h2>Statistic Details</h2>
-            <StatDetails character={character} />
-            <h2>Feat Details</h2>
-            <FeatDetails character={character} />
+          <div style={{ columns: "2", columnGap: "2rem" }}>
+            <div style={{ breakInside: "avoid-column" }}>
+              <h2>Statistic Details</h2>
+              <StatDetails character={character} />
+              <h2>Feat Details</h2>
+              <FeatDetails character={character} />
+            </div>
+            <div>
+              <h2>Weapons Details</h2>
+              <WeaponsDetails character={character} />
+            </div>
           </div>
-          <div style={{ width: "45%", float: "right" }}>
-            <h2>Weapons Details</h2>
-            <WeaponsDetails character={character} />
-          </div>
+          <h2>Resistances</h2>
+          <ResistancesDetails character={character} />
         </Content>
         <Content className="fixed" style={{ padding: "2rem" }}>
           <h2>Skill Details</h2>
           <SkillDetails character={character} />
+          <dl className="row">
+            <dt className="col-sm-2">Bought</dt>
+            <dd className="col-sm-10">Roll goed from 1d10 to 1d20</dd>
+            <dt className="col-sm-2">Skilled</dt>
+            <dd className="col-sm-10">Get the statistic as a bonus</dd>
+            <dt className="col-sm-2">Professional</dt>
+            <dd className="col-sm-10">Get your level as a bonus</dd>
+            <dt className="col-sm-2">Expert</dt>
+            <dd className="col-sm-10">Get Expertise as a bonus</dd>
+          </dl>
         </Content>
       </div>
     );

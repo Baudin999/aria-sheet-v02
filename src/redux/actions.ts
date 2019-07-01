@@ -1,6 +1,7 @@
 import { dispatch, getState } from "./store";
 import * as firebase from "firebase";
 import { logout as fbLogout, createUserWithEmailAndPassword } from "./../services/_firebase";
+import { debounce } from "../services/helpers";
 
 export enum Events {
   USER_LOGGED_IN = "USER_LOGGED_IN",
@@ -61,7 +62,7 @@ export const getCharacters = (uid: string) => {
     });
 };
 
-export const saveCharacter = character => {
+export const saveCharacter = debounce(character => {
   let { user } = getState();
   if (!user) throw "Hey! quit hacking and leave this game alone!";
   return firebase
@@ -74,7 +75,7 @@ export const saveCharacter = character => {
         payload: character
       });
     });
-};
+}, 700);
 
 export const deleteCharacter = character => () => {
   let { user } = getState();

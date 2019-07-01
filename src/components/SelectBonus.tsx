@@ -39,15 +39,19 @@ export const Bonusses = ({ item, deleteBonus }) => {
     "constant",
     "active",
     "stat",
-    "type"
+    "type",
+    "notes"
   ];
+  if (Object.keys(item).filter(key => invalidKeys.indexOf(key) === -1).length === 0) {
+    return <div>No bonusses on your weapon</div>;
+  }
   return (
     <div>
       {Object.keys(item)
         .filter(key => invalidKeys.indexOf(key) === -1)
         .map((bonus, i) => {
           return (
-            <div key={i} className="bonus-row" onClick={() => deleteBonus(bonus)}>
+            <div key={i} className="stand-out-1 bonus-row" onClick={() => deleteBonus(bonus)}>
               <FontAwesomeIcon icon="trash-alt" style={{ marginRight: "10px" }} /> {bonus} -{" "}
               {item[bonus]}
             </div>

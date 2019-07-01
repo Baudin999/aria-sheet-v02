@@ -22,7 +22,7 @@ export const calculateCharacter = character => {
   character.gear
     .filter(g => g.active)
     .forEach(g => {
-      console.log(g);
+      // console.log(g);
       for (var key in g) {
         character.feats[key] ? (character.feats[key].gear += g[key]) : undefined;
         character.stats[key] ? (character.stats[key].gear += g[key]) : undefined;
@@ -35,7 +35,7 @@ export const calculateCharacter = character => {
   character.weapons
     .filter(g => g.active)
     .forEach(g => {
-      console.log(g);
+      // console.log(g);
       for (var key in g) {
         character.feats[key] ? (character.feats[key].weapons += g[key]) : undefined;
         character.stats[key] ? (character.stats[key].weapons += g[key]) : undefined;
@@ -169,6 +169,26 @@ export const calculateCharacter = character => {
 
   // UPDATE WEAPON DESCRIPTION
   character.weapons.forEach(w => {
+    switch (w.type) {
+      case "Melee":
+        w.stat = "str";
+        break;
+      case "Ranged":
+        w.stat = "agi";
+        break;
+      case "Magic":
+        w.stat = "inu";
+        break;
+      case "Finesse":
+        w.stat = "Melee";
+        break;
+      case "Unarmed":
+        w.stat = "agi";
+        break;
+      default:
+        w.stat = "str";
+        break;
+    }
     let statBonus = character.stats[w.stat || "str"].result;
     let featDMG = character.feats.DMG.result;
     w.description = `${w.numberOfDice}d${w.diceSides}+${w.constant + statBonus + featDMG}`;
