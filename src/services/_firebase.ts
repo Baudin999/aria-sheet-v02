@@ -20,12 +20,6 @@ export const initFirebase = () => {
           if (user) {
             console.log("onAuthStateChanged");
             userLoggedIn(user);
-
-            setTimeout(() => {
-              fetch("/api/foo")
-                .then(r => r.text())
-                .then(r => console.log(r));
-            }, 0);
           } else {
             //do sth
           }
@@ -74,8 +68,6 @@ const initializeUser = async user => {
   let o = {
     createdOn: new Date().toISOString()
   };
-
-  console.log(user.uid);
 
   let ref = firebase.database().ref(user.uid);
   try {

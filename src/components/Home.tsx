@@ -21,7 +21,6 @@ const Status = () => {
 class $Home extends React.Component<IState> {
   render() {
     let { user, selectedCharacter, history } = this.props as any;
-    console.log("Home reloading");
     if (!user) {
       return (
         <Router>

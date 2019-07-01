@@ -15,6 +15,10 @@ import { CharacterDetailsProfession } from "./CharacterDetailsProfession";
 import { CharacterDetailsXP } from "./CharacterDetailsXP";
 import { CharacterDetailsLevel } from "./CharacterDetailsLevel";
 import { selectCharacter } from "../redux/actions";
+import { FeatDetails } from "./FeatDetails";
+import { SkillDetails } from "./SkillDetails";
+import { StatDetails } from "./StatDetails";
+import { WeaponsDetails } from "./WeaponsDetails";
 
 class _CharacterDetails extends React.Component<any, any> {
   render() {
@@ -51,6 +55,23 @@ class _CharacterDetails extends React.Component<any, any> {
         </Content>
 
         <Content className="fixed">Spells and stuff</Content>
+
+        <Content className="fixed" style={{ padding: "2rem" }}>
+          <div style={{ width: "45%", float: "left" }}>
+            <h2>Statistic Details</h2>
+            <StatDetails character={character} />
+            <h2>Feat Details</h2>
+            <FeatDetails character={character} />
+          </div>
+          <div style={{ width: "45%", float: "right" }}>
+            <h2>Weapons Details</h2>
+            <WeaponsDetails character={character} />
+          </div>
+        </Content>
+        <Content className="fixed" style={{ padding: "2rem" }}>
+          <h2>Skill Details</h2>
+          <SkillDetails character={character} />
+        </Content>
       </div>
     );
   }

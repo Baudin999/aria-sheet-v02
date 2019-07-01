@@ -4,3 +4,16 @@ export const uuid = () => {
     (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
   );
 };
+
+export const setCharacter = (props, t) => {
+  let character;
+  if (props.selectedCharacter) {
+    character = props.selectedCharacter;
+  } else {
+    let characterName = props.match.params.name;
+    character = props.characters.find(c => c.name === characterName);
+  }
+  t.setState({
+    character: JSON.parse(JSON.stringify(character))
+  });
+};

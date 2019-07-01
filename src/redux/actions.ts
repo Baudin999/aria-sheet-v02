@@ -32,6 +32,7 @@ export const logout = () => {
 export const createUser = async (email, password) => {
   try {
     let user = await createUserWithEmailAndPassword(email, password);
+    console.log(user);
     window.location.href = "/";
   } catch (err) {
     //if (window.location.href !== "/create-account") window.location.href = "/create-account";

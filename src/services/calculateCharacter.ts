@@ -1,10 +1,28 @@
 export const calculateCharacter = character => {
   character.xp = 0;
 
+  // RESET THE CHARACTER FEATS
+  Object.keys(character.feats).forEach(feat => {
+    character.feats[feat].gear = 0;
+    character.feats[feat].weapons = 0;
+    character.feats[feat].specials = 0;
+  });
+  Object.keys(character.stats).forEach(stat => {
+    character.stats[stat].gear = 0;
+    character.stats[stat].weapons = 0;
+    character.stats[stat].specials = 0;
+  });
+  Object.keys(character.skills).forEach(skill => {
+    character.skills[skill].gear = 0;
+    character.skills[skill].weapons = 0;
+    character.skills[skill].specials = 0;
+  });
+
   // GEAR
   character.gear
     .filter(g => g.active)
     .forEach(g => {
+      console.log(g);
       for (var key in g) {
         character.feats[key] ? (character.feats[key].gear += g[key]) : undefined;
         character.stats[key] ? (character.stats[key].gear += g[key]) : undefined;
@@ -17,11 +35,12 @@ export const calculateCharacter = character => {
   character.weapons
     .filter(g => g.active)
     .forEach(g => {
+      console.log(g);
       for (var key in g) {
-        character.feats[key] ? (character.feats[key].gear += g[key]) : undefined;
-        character.stats[key] ? (character.stats[key].gear += g[key]) : undefined;
-        character.skills[key] ? (character.skills[key].gear += g[key]) : undefined;
-        character.resistances[key] ? (character.resistances[key].gear += g[key]) : undefined;
+        character.feats[key] ? (character.feats[key].weapons += g[key]) : undefined;
+        character.stats[key] ? (character.stats[key].weapons += g[key]) : undefined;
+        character.skills[key] ? (character.skills[key].weapons += g[key]) : undefined;
+        character.resistances[key] ? (character.resistances[key].weapons += g[key]) : undefined;
       }
     });
 
@@ -30,10 +49,10 @@ export const calculateCharacter = character => {
     .filter(g => g.active)
     .forEach(g => {
       for (var key in g) {
-        character.feats[key] ? (character.feats[key].gear += g[key]) : undefined;
-        character.stats[key] ? (character.stats[key].gear += g[key]) : undefined;
-        character.skills[key] ? (character.skills[key].gear += g[key]) : undefined;
-        character.resistances[key] ? (character.resistances[key].gear += g[key]) : undefined;
+        character.feats[key] ? (character.feats[key].specials += g[key]) : undefined;
+        character.stats[key] ? (character.stats[key].specials += g[key]) : undefined;
+        character.skills[key] ? (character.skills[key].specials += g[key]) : undefined;
+        character.resistances[key] ? (character.resistances[key].specials += g[key]) : undefined;
       }
     });
 
@@ -56,11 +75,12 @@ export const calculateCharacter = character => {
   // FEATS
 
   for (let key in character.feats) {
+    //if (key === "Armor") debugger;
     //if (key === "Directed Strike") debugger;
     let feat = character.feats[key];
     feat.rank = feat.rank || 0;
     feat.totalRank = feat.rank + feat.gear + feat.weapons + feat.specials;
-    feat.xp = xpLookup[feat.totalRank || 0];
+    feat.xp = xpLookup[feat.totalRank || 0] || 999;
     character.xp += feat.xp;
     //console.log(key, feat.xp);
 

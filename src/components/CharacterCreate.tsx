@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import Form from "react-jsonschema-form";
-import { statistics, defaultCharacter } from "./../forms/data";
 import { schema, uiSchema, transformErrors } from "./../forms/character-create";
 import { Content } from "./snippets/Content";
 import { StackPanel } from "./snippets/StackPanel";
@@ -22,7 +21,7 @@ const CharacterCard = ({ character }) => {
 
 export class CharacterCreate extends React.Component<any, any> {
   state = {
-    character: { name: "", race: "Human", description: "" }
+    character: { id: uuid(), name: "", race: "Human", description: "" }
   };
   submit = r => {
     // create a new character
@@ -45,7 +44,7 @@ export class CharacterCreate extends React.Component<any, any> {
   render() {
     let { character } = this.state;
     return (
-      <Content className="fixed character-create">
+      <Content className="fixed character-create" style={{ maxWidth: "500px" }}>
         <StackPanel>
           <Form
             schema={schema}
@@ -55,7 +54,6 @@ export class CharacterCreate extends React.Component<any, any> {
             onChange={this.onChange}
             transformErrors={transformErrors}
           />
-          <CharacterCard character={character} />
         </StackPanel>
       </Content>
     );

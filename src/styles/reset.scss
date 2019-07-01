@@ -22,3 +22,15 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+.rjsf {
+  width: 100%;
+  padding: 2rem;
+
+  .btn-add:before {
+    content: "Add";
+  }
+  .array-item-remove:before {
+    content: "Remove";
+  }
+}
