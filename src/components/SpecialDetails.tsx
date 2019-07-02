@@ -33,7 +33,7 @@ export class SpecialDetails extends React.Component<any, any> {
     let { changeSpecial, special } = this.props;
     special[title] = val;
 
-    if (val) {
+    if (val || val === 0) {
       changeSpecial(special);
     }
   };

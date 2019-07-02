@@ -4,6 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const SelectBonusItem = ({ character, ...props }) => (
   <select {...props}>
     <option />
+    <optgroup label="Statistics">
+      {Object.keys(character.stats).map(i => (
+        <option key={i} value={i}>
+          {i.toUpperCase()}
+        </option>
+      ))}
+    </optgroup>
     <optgroup label="Feats">
       {Object.keys(character.feats).map(i => (
         <option key={i} value={i}>
@@ -29,21 +36,10 @@ export const SelectBonusItem = ({ character, ...props }) => (
 );
 
 export const Bonusses = ({ item, deleteBonus }) => {
-  // let invalidKeys = [
-  //   // "id",
-  //   // "title",
-  //   // "description",
-  //   // "dmg",
-  //   // "numberOfDice",
-  //   // "diceSides",
-  //   // "constant",
-  //   // "active",
-  //   // "stat",
-  //   // "type",
-  //   // "notes",
-  //   // "location"
-  // ];
-  let keys = Object.keys(item).filter(key => key[0] === key[0].toUpperCase());
+  let stats = ["str", "agi", "per", "inu", "cha"];
+  let keys = Object.keys(item).filter(
+    key => key[0] === key[0].toUpperCase() || stats.indexOf(key) > -1
+  );
   if (keys.length === 0) {
     return <div>No bonusses on your weapon</div>;
   }

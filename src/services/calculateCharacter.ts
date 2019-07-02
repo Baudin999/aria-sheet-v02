@@ -143,6 +143,13 @@ export const calculateCharacter = character => {
     character.xp += spell.xp;
   });
 
+  // SPECIALS
+  (character.specials || []).forEach(special => {
+    special.xp = xpLookup[special.rank || 0];
+    if (special.xp === undefined || special.xp === NaN) special.xp = 999;
+    character.xp += special.xp;
+  });
+
   character.level = levelLookup(character.xp);
 
   character.hp = Math.round(

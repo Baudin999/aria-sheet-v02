@@ -40,13 +40,35 @@ export const monk = {
       "Spirit Sprint",
       "As long as there is a surface you can run on/against it. This incudes but is not limited to: water, walls or tree tops. While Spirit Sprinting you cannot attack and each attack which lands will do double DMG."
     ),
-    createSpell("Astral Projection", ""),
-    createSpell("Float like a Butterfly"),
-    createSpell("Sting like a Bee"),
-    createSpell("Ignore Armor"),
-    createSpell("Lightning Reflexes"),
-    createSpell("Earth, Wind & Fire"),
-    createSpell("Water Punch"),
-    createSpell("Way of the Iron Fist")
+    createSpell(
+      "Astral Projection",
+      "While Astral Projecting you can ignore non-permanent physical object like walls and roofs; but you can't pass through solid rock. Casters can see you with their Magical Sight. To other magically gifted people you can appear in their dreams."
+    ),
+    createSpell(
+      "Float like a Butterfly",
+      "For 3 CHI you get a +5 defense until the start of your next round."
+    ),
+    createSpell("Sting like a Bee", "For 3 CHI you get a 100% CRIT chance on your next attack."),
+    createSpell(
+      "Ignore Armor",
+      "For 1 CHI you can ignore the target's armor for that attack; Only works with fists or first weapons."
+    ),
+    createSpell(
+      "Lightning Reflexes",
+      "For 3 CHI you gain +AGI armor until your next round. This only works if you wear no armor."
+    ),
+    createSpell("Earth, Wind & Fire", "For 1 CHI your attack counts as an Elemental Attack."),
+    createSpell("Water Punch", "For 3 CHI your punch heals the target for 1/2 Inate Healing.")
+  ],
+  specials: []
+};
+
+export const barbarian = {
+  spells: [],
+  specials: [
+    createSpell("Rage", "Every time you loose 10 HP you gain +1 DMG."),
+    createSpell("Bleed", "Every Action Point does 1d4 DMG instead of 1 DMG."),
+    createSpell("Revenge", "Whenever you get hit, retalliate with 1d4 DMG."),
+    createSpell("Charger", "Take -10 to your skill but if you hit you do +10 DMG, must be running.")
   ]
 };

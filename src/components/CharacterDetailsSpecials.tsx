@@ -4,7 +4,11 @@ const Special = ({ special }) => {
   return (
     <tr className="">
       <td className="">
-        {special.title}: {special.notes}
+        [{special.rank}/{special.xp}xp]
+        <span style={{ display: "inline-block", marginLeft: "5px", fontWeight: "bold" }}>
+          {special.title}
+        </span>
+        : {special.notes}
       </td>
     </tr>
   );
