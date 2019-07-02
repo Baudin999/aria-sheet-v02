@@ -16,6 +16,7 @@ import { EditWeapons } from "./EditWeapons";
 import { EditGears } from "./EditGear";
 import { EditSpecials } from "./EditSpecials";
 import { EditSpells } from "./EditSpells";
+import { ExportCharacter } from "./Export";
 
 const Status = () => {
   return <div>Status</div>;
@@ -48,6 +49,7 @@ class $Home extends React.Component<IState> {
           <Route exact path="/character/:name/gear" component={EditGears} />
           <Route exact path="/character/:name/specials" component={EditSpecials} />
           <Route exact path="/character/:name/spells" component={EditSpells} />
+          <Route exact path="/character/:name/export" component={ExportCharacter} />
           {/* <Redirect to="/" /> */}
           <Footer />
         </Router>

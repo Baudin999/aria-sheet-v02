@@ -87,6 +87,12 @@ export class Nav extends React.Component<INavProps> {
                     path={`/character/${selectedCharacter.name}/spells`}
                     currentPath={path}
                     text="Spells"
+                  />,
+                  <$Link
+                    key="export"
+                    path={`/character/${selectedCharacter.name}/export`}
+                    currentPath={path}
+                    text="Export"
                   />
                 ]
               : null}
