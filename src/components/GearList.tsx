@@ -1,12 +1,16 @@
 import * as React from "react";
 
-export const GearList = ({ gear, addGear, selectGear }) => {
+export const GearList = ({ gear, selectedGear, addGear, selectGear }) => {
+  selectedGear = selectedGear || { id: -1 };
   return (
     <div className="master">
       <ul>
         {gear.map(($gear, i) => (
-          <li className="stand-out-1" key={$gear.id || i} onClick={() => selectGear($gear)}>
-            {$gear.title} - {$gear.description}
+          <li
+            className={"stand-out-1" + (selectedGear.id === $gear.id ? " active" : "")}
+            key={$gear.id || i}
+            onClick={() => selectGear($gear)}>
+            {$gear.title} - {$gear.description || "No bonusses"}
           </li>
         ))}
       </ul>

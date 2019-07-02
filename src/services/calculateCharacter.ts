@@ -229,7 +229,9 @@ export const calculateCharacter = character => {
     }
     let statBonus = character.stats[w.stat || "str"].result;
     let featDMG = character.feats.DMG.result;
-    w.description = `${w.numberOfDice}d${w.diceSides}+${w.constant + statBonus + featDMG}`;
+    w.description = `${w.numberOfDice || 1}d${w.diceSides || 4}+${(w.constant || 0) +
+      statBonus +
+      featDMG}`;
   });
 
   return character;

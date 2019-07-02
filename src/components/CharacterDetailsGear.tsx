@@ -16,7 +16,9 @@ export const CharacterDetailsGear = () => {
         {gear.map((g, i) => (
           <tr key={g.id || i} className="weapon str">
             <td className="total">
-              <span style={{ fontWeight: "bold" }}>{g.title}:</span> {g.description}
+              <span style={{ fontWeight: "bold" }}>{g.title}:</span> {g.location}
+              {"; "}
+              {g.description || "No bonusses"}
             </td>
           </tr>
         ))}

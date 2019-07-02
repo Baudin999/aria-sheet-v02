@@ -37,6 +37,21 @@ class _EditWeapons extends React.Component<any, any> {
     });
   };
 
+  deleteWeapon = weapon => {
+    let newCharacter = calculateCharacter({
+      ...this.state.character,
+      weapons: (this.state.character.weapons || []).filter(w => w.id !== weapon.id)
+    });
+
+    this.setState({
+      ...this.state,
+      character: newCharacter,
+      selectedWeapon: null
+    });
+
+    saveCharacter(newCharacter);
+  };
+
   addWeapon = () => {
     let newWeapon = {
       id: uuid(),
@@ -44,16 +59,22 @@ class _EditWeapons extends React.Component<any, any> {
       description: "1d4+1",
       type: "Melee",
       stat: "str",
-      initiative: 10
+      initiative: 10,
+      numberOfDice: 1,
+      diceSides: 4,
+      constant: 1
     };
+    let newCharacter = calculateCharacter({
+      ...this.state.character,
+      weapons: [...this.state.character.weapons, newWeapon]
+    });
     this.setState({
       ...this.state,
-      character: {
-        ...this.state.character,
-        weapons: [...this.state.character.weapons, newWeapon]
-      },
+      character: newCharacter,
       selectedWeapon: newWeapon
     });
+
+    saveCharacter(newCharacter);
   };
 
   render() {
@@ -76,6 +97,7 @@ class _EditWeapons extends React.Component<any, any> {
               character={character}
               weapon={selectedWeapon}
               changeWeapon={this.changeWeapon}
+              deleteWeapon={this.deleteWeapon}
             />
           )}
         </StackPanel>

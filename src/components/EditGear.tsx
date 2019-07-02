@@ -35,21 +35,39 @@ class _EditGears extends React.Component<any, any> {
       selectedGear: $gear
     });
   };
+  deleteGear = g => {
+    let newCharacter = calculateCharacter({
+      ...this.state.character,
+      gear: (this.state.character.gear || []).filter(w => w.id !== g.id)
+    });
+
+    this.setState({
+      ...this.state,
+      character: newCharacter,
+      selectedGear: null
+    });
+
+    saveCharacter(newCharacter);
+  };
 
   addGear = () => {
     let newGear = {
       id: uuid(),
       title: "No Name",
-      type: "Nothing"
+      type: "Nothing",
+      notes: "No description"
     };
+    let newCharacter = calculateCharacter({
+      ...this.state.character,
+      gear: [...(this.state.character.gear || []), newGear]
+    });
     this.setState({
       ...this.state,
-      character: {
-        ...this.state.character,
-        gear: [...this.state.character.gear, newGear]
-      },
+      character: newCharacter,
       selectedGear: newGear
     });
+
+    saveCharacter(newCharacter);
   };
 
   render() {
@@ -61,9 +79,19 @@ class _EditGears extends React.Component<any, any> {
         <div>Character Total XP: {character.xp}</div>
         <div>Character Level: {character.level}</div>
         <StackPanel>
-          <GearList gear={character.gear} addGear={this.addGear} selectGear={this.selectGear} />
+          <GearList
+            gear={character.gear || []}
+            selectedGear={selectedGear}
+            addGear={this.addGear}
+            selectGear={this.selectGear}
+          />
           {selectedGear && (
-            <GearDetails character={character} gear={selectedGear} changeGear={this.changeGear} />
+            <GearDetails
+              character={character}
+              gear={selectedGear}
+              changeGear={this.changeGear}
+              deleteGear={this.deleteGear}
+            />
           )}
         </StackPanel>
       </Content>

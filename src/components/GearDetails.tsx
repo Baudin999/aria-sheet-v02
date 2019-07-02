@@ -78,7 +78,7 @@ export class GearDetails extends React.Component<any, any> {
   };
 
   render() {
-    let { character, gear } = this.props;
+    let { character, gear, deleteGear } = this.props;
     if (!gear) return null;
     return (
       <div>
@@ -97,6 +97,7 @@ export class GearDetails extends React.Component<any, any> {
               className="form-control"
               value={gear.location}
               onChange={e => this.changeText("location", e.target.value)}>
+              <option value="Everywhere">Everywhere</option>
               <option value="Head">Head</option>
               <option value="Torso">Torso</option>
               <option value="Arms">Arms</option>
@@ -108,6 +109,7 @@ export class GearDetails extends React.Component<any, any> {
               <option value="Left Finger">Left Finger</option>
               <option value="Right Finger">Right Finger</option>
               <option value="Shield">Shield</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div className="form-group">
@@ -186,6 +188,12 @@ export class GearDetails extends React.Component<any, any> {
               </button>
             </div>
           </div>
+        </div>
+
+        <div>
+          <button className="btn btn-warning" onClick={() => deleteGear(gear)}>
+            Delete {gear.title}
+          </button>
         </div>
       </div>
     );

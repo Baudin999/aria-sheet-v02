@@ -94,7 +94,7 @@ export class WeaponDetails extends React.Component<any, any> {
   };
 
   render() {
-    let { character, weapon } = this.props;
+    let { character, weapon, deleteWeapon } = this.props;
     if (!weapon) return null;
     return (
       <div>
@@ -219,6 +219,12 @@ export class WeaponDetails extends React.Component<any, any> {
               </button>
             </div>
           </div>
+        </div>
+
+        <div>
+          <button className="btn btn-warning" onClick={() => deleteWeapon(weapon)}>
+            Delete {weapon.title}
+          </button>
         </div>
       </div>
     );
