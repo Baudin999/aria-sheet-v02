@@ -93,6 +93,7 @@ export const deleteCharacter = character => () => {
 };
 
 export const selectCharacter = character => {
+  console.log("Selecting character", character);
   dispatch({
     type: Events.CHARACTER_SELECTED,
     payload: character

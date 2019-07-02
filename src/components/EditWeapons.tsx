@@ -68,6 +68,7 @@ class _EditWeapons extends React.Component<any, any> {
             weapons={character.weapons}
             addWeapon={this.addWeapon}
             selectWeapon={this.selectWeapon}
+            selectedWeapon={selectedWeapon}
           />
           {selectedWeapon && (
             <WeaponDetails

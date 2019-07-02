@@ -1,3 +1,5 @@
+import { selectCharacter } from "../redux/actions";
+
 export const uuid = () => {
   // @ts-ignore
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
@@ -12,6 +14,7 @@ export const setCharacter = (props, t) => {
   } else {
     let characterName = props.match.params.name;
     character = props.characters.find(c => c.name === characterName);
+    selectCharacter(character);
   }
   t.setState({
     character: JSON.parse(JSON.stringify(character))

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Content } from "./snippets/Content";
 import { StackPanel } from "./snippets/StackPanel";
 import { calculateCharacter } from "../services/calculateCharacter";
-import { saveCharacter } from "../redux/actions";
+import { saveCharacter, selectCharacter } from "../redux/actions";
 
 class _EditResistances extends React.Component<any, any> {
   state = { character: null };
@@ -14,6 +14,7 @@ class _EditResistances extends React.Component<any, any> {
     } else {
       let characterName = this.props.match.params.name;
       character = this.props.characters.find(c => c.name === characterName);
+      if (character) selectCharacter(character);
     }
 
     this.setState({
@@ -36,66 +37,63 @@ class _EditResistances extends React.Component<any, any> {
     let { character } = this.state;
 
     return (
-      <Content className="fixed character-create">
+      <Content className="fixed character-create" style={{ margin: "1rem" }}>
         <div>Character Total XP: {character.xp}</div>
         <div>Character Level: {character.level}</div>
-        <StackPanel>
-          This is the Edit Feats part
-          <table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Bought</th>
-                <th>Skilled</th>
-                <th>Professional</th>
-                <th>Expert</th>
-                <th>XP</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.keys(character.resistances).map(key => {
-                let resistances = character.resistances[key];
-                return (
-                  <tr key={key}>
-                    <td>{resistances.title}</td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={resistances.bought}
-                        onChange={this.changeRank(resistances.title, "bought")}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={resistances.skilled}
-                        onChange={this.changeRank(resistances.title, "skilled")}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={resistances.professional}
-                        onChange={this.changeRank(resistances.title, "professional")}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={resistances.expert}
-                        onChange={this.changeRank(resistances.title, "expert")}
-                      />
-                    </td>
-                    <td>{resistances.xp}</td>
-                    <td>{resistances.description}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </StackPanel>
-        <button onClick={() => saveCharacter(this.state.character)}>Save</button>
+
+        <table className="table table-sm" style={{ maxWidth: "700px" }}>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Bought</th>
+              <th>Skilled</th>
+              <th>Professional</th>
+              <th>Expert</th>
+              <th>XP</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(character.resistances).map(key => {
+              let resistances = character.resistances[key];
+              return (
+                <tr key={key}>
+                  <td>{resistances.title}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={resistances.bought}
+                      onChange={this.changeRank(resistances.title, "bought")}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={resistances.skilled}
+                      onChange={this.changeRank(resistances.title, "skilled")}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={resistances.professional}
+                      onChange={this.changeRank(resistances.title, "professional")}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={resistances.expert}
+                      onChange={this.changeRank(resistances.title, "expert")}
+                    />
+                  </td>
+                  <td>{resistances.xp}</td>
+                  <td>{resistances.description}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </Content>
     );
   }

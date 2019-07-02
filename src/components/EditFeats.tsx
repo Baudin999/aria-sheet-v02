@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Content } from "./snippets/Content";
 import { StackPanel } from "./snippets/StackPanel";
 import { calculateCharacter } from "../services/calculateCharacter";
-import { saveCharacter } from "../redux/actions";
+import { saveCharacter, selectCharacter } from "../redux/actions";
 
 class _EditFeats extends React.Component<any, any> {
   state = { character: null };
@@ -14,6 +14,7 @@ class _EditFeats extends React.Component<any, any> {
     } else {
       let characterName = this.props.match.params.name;
       character = this.props.characters.find(c => c.name === characterName);
+      if (character) selectCharacter(character);
     }
 
     this.setState({
@@ -37,48 +38,46 @@ class _EditFeats extends React.Component<any, any> {
     let { character } = this.state;
 
     return (
-      <Content className="fixed character-create">
+      <Content className="fixed character-create" style={{ margin: "1rem" }}>
         <div>Character Total XP: {character.xp}</div>
         <div>Character Level: {character.level}</div>
-        <StackPanel>
-          This is the Edit Feats part
-          <table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Rank</th>
-                <th>Gear</th>
-                <th>Weapons</th>
-                <th>Specials</th>
-                <th>XP</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.keys(character.feats).map(key => {
-                let feat = character.feats[key];
-                return (
-                  <tr key={key}>
-                    <td>{feat.title}</td>
-                    <td>
-                      <input
-                        type="number"
-                        value={feat.rank}
-                        onChange={this.changeRank(feat.title)}
-                      />
-                    </td>
-                    <td>{feat.gear}</td>
-                    <td>{feat.weapons}</td>
-                    <td>{feat.specials}</td>
-                    <td>{feat.xp}</td>
-                    <td>{feat.description}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </StackPanel>
-        <button onClick={() => saveCharacter(this.state.character)}>Save</button>
+
+        <table className="table table-sm" style={{ maxWidth: "700px" }}>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Rank</th>
+              <th>Gear</th>
+              <th>Weapons</th>
+              <th>Specials</th>
+              <th>XP</th>
+              <th style={{ textAlign: "right" }}>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(character.feats).map(key => {
+              let feat = character.feats[key];
+              return (
+                <tr key={key}>
+                  <td>{feat.title}</td>
+                  <td>
+                    <input
+                      type="number"
+                      style={{ textAlign: "center" }}
+                      value={feat.rank}
+                      onChange={this.changeRank(feat.title)}
+                    />
+                  </td>
+                  <td>{feat.gear}</td>
+                  <td>{feat.weapons}</td>
+                  <td>{feat.specials}</td>
+                  <td>{feat.xp}</td>
+                  <td style={{ textAlign: "right" }}>{feat.description}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </Content>
     );
   }

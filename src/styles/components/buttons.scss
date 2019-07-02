@@ -15,16 +15,6 @@
   }
 }
 
-.button-bar {
-  & > * {
-    margin-right: 1rem;
-  }
-  .btn {
-    float: right;
-    margin-top: 1rem;
-    .button-title {
-      display: inline-block;
-      margin-left: 0.75rem;
-    }
-  }
+.btn-group {
+  margin-top: 1rem;
 }

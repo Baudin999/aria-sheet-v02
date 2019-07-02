@@ -19,7 +19,7 @@ export const WeaponsDetails = ({ character }) => {
       {Object.keys(character.weapons).map(weaponName => {
         let weapon = character.weapons[weaponName];
         return (
-          <tr key={weaponName}>
+          <tr key={weapon.id}>
             <td>{weapon.title}</td>
             <td>{weapon.stat}</td>
             <td>
@@ -27,6 +27,7 @@ export const WeaponsDetails = ({ character }) => {
                 .filter(key => invalidKeys.indexOf(key) === -1)
                 .map(key => (
                   <span
+                    key={key}
                     style={{ whiteSpace: "nowrap", display: "inline-block", marginRight: "5px" }}>
                     {key}:{weapon[key]}
                   </span>

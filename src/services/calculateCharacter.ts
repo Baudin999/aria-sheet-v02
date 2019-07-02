@@ -17,6 +17,11 @@ export const calculateCharacter = character => {
     character.skills[skill].weapons = 0;
     character.skills[skill].specials = 0;
   });
+  Object.keys(character.resistances).forEach(resistance => {
+    character.resistances[resistance].gear = 0;
+    character.resistances[resistance].weapons = 0;
+    character.resistances[resistance].specials = 0;
+  });
 
   // GEAR
   character.gear
@@ -75,14 +80,11 @@ export const calculateCharacter = character => {
   // FEATS
 
   for (let key in character.feats) {
-    //if (key === "Armor") debugger;
-    //if (key === "Directed Strike") debugger;
     let feat = character.feats[key];
     feat.rank = feat.rank || 0;
     feat.totalRank = feat.rank + feat.gear + feat.weapons + feat.specials;
-    feat.xp = xpLookup[feat.totalRank || 0] || 999;
-    character.xp += feat.xp;
-    //console.log(key, feat.xp);
+    feat.xp = xpLookup[feat.rank];
+    character.xp += +feat.xp;
 
     // crit behaves differently
     if (feat.title === "Crit") {
@@ -111,26 +113,28 @@ export const calculateCharacter = character => {
     }
   }
 
+  console.log(character.xp);
+
   // SKILLS
 
   for (let key in character.skills) {
     let skill = character.skills[key];
-    skill.bonus = skill.gear + skill.weapons + skill.specials;
+    skill.baseBonus = skill.gear + skill.weapons + skill.specials;
+    skill.bonus = skill.baseBonus;
     let rank = skill.expert ? 4 : skill.professional ? 3 : skill.skilled ? 2 : skill.bought ? 1 : 0;
     skill.xp = xpLookup[rank];
-    character.xp += skill.xp;
-    //console.log(key, skill.xp);
+    character.xp += +skill.xp;
   }
 
   // RESISTANCES
 
   for (let key in character.resistances) {
     let r = character.resistances[key];
-    r.bonus = r.gear + r.weapons + r.specials;
+    r.baseBonus = r.gear + r.weapons + r.specials;
+    r.bonus = r.baseBonus;
     let rank = r.expert ? 4 : r.professional ? 3 : r.skilled ? 2 : r.bought ? 1 : 0;
     r.xp = xpLookup[rank];
-    character.xp += r.xp;
-    //console.log(key, r.xp);
+    character.xp += +r.xp;
   }
 
   character.level = levelLookup(character.xp);
@@ -150,7 +154,7 @@ export const calculateCharacter = character => {
     if (skill.expert) {
       skill.bonus += character.feats["Expertise"].totalRank;
     }
-    skill.description = skill.bought ? `1d20 + ${skill.bonus}` : `1d10 + 0`;
+    skill.description = skill.bought ? `1d20 + ${skill.bonus}` : `1d10 + ${skill.baseBonus}`;
   }
 
   for (let key in character.resistances) {
@@ -164,7 +168,9 @@ export const calculateCharacter = character => {
     if (resistance.expert) {
       resistance.bonus += character.feats["Expertise"].totalRank;
     }
-    resistance.description = resistance.bought ? `1d20 + ${resistance.bonus}` : `1d10 + 0`;
+    resistance.description = resistance.bought
+      ? `1d20 + ${resistance.bonus}`
+      : `1d10 + ${resistance.baseBonus}`;
   }
 
   // UPDATE WEAPON DESCRIPTION
