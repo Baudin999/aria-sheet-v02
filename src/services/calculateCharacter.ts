@@ -1,3 +1,14 @@
+let calculateDescription = item => {
+  let stats = ["str", "agi", "per", "inu", "cha"];
+  item.description = Object.keys(item)
+    .filter(key => key[0] === key[0].toUpperCase() || stats.indexOf(key) > -1)
+    .map(key => {
+      return `${key}:${item[key]}`;
+    })
+    .join(", ");
+  return item;
+};
+
 export const calculateCharacter = character => {
   character.xp = 0;
 
@@ -24,7 +35,8 @@ export const calculateCharacter = character => {
   });
 
   // GEAR
-  character.gear
+  (character.gear || [])
+    .map(calculateDescription)
     .filter(g => g.active)
     .forEach(g => {
       // console.log(g);
@@ -37,7 +49,8 @@ export const calculateCharacter = character => {
     });
 
   // WEAPONS
-  character.weapons
+  (character.weapons || [])
+    .map(calculateDescription)
     .filter(g => g.active)
     .forEach(g => {
       // console.log(g);
@@ -51,6 +64,7 @@ export const calculateCharacter = character => {
 
   // SPECIALS
   (character.specials || [])
+    .map(calculateDescription)
     .filter(g => g.active)
     .forEach(g => {
       character.xp += g.xpValue || 0;
@@ -140,14 +154,14 @@ export const calculateCharacter = character => {
   (character.spells || []).forEach(spell => {
     spell.xp = xpLookup[spell.rank || 0];
     if (spell.xp === undefined || spell.xp === NaN) spell.xp = 999;
-    character.xp += spell.xp;
+    character.xp += spell.xp + (spell.xpValue || 0);
   });
 
   // SPECIALS
   (character.specials || []).forEach(special => {
     special.xp = xpLookup[special.rank || 0];
     if (special.xp === undefined || special.xp === NaN) special.xp = 999;
-    character.xp += special.xp;
+    character.xp += special.xp + (special.xpValue || 0);
   });
 
   character.level = levelLookup(character.xp);
