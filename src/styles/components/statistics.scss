@@ -5,7 +5,7 @@
   position: absolute;
   left: $col-1;
   top: $row-2;
-  width: 60px;
+  width: 76px;
 
   .statistic {
     position: relative;
@@ -18,8 +18,9 @@
       text-align: center;
     }
     .value {
-      font-size: 3em;
+      font-size: 2.8em;
       text-align: center;
+      line-height: 1.8em;
     }
 
     .total {
@@ -42,13 +43,14 @@
   top: $row-2;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 
   .statistic {
     position: relative;
     border: 1px solid $primary;
     margin-bottom: 1rem;
-    width: 60px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     margin-right: 5px;
 
     .title {
@@ -60,11 +62,12 @@
     .value {
       font-size: 1.5em;
       text-align: center;
+      padding-top: 4px;
     }
 
     .total {
       position: absolute;
-      bottom: -11px;
+      bottom: -4px;
       left: 50%;
       transform: translateX(-50%);
       border: 1px solid gray;

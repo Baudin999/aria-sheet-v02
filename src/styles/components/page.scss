@@ -1,12 +1,12 @@
-$col-1: 10px;
-$col-2: 90px;
-$col-3: 285px;
-$col-4: 480px;
+$col-1: 20px;
+$col-2: 110px;
+$col-3: 325px;
+$col-4: 540px;
 
 $row-1: 20px; // title
 $row-2: 110px; // secudary stats
-$row-3: 170px; // lists
-$row-4: 476px; // lists
+$row-3: 185px; // lists
+$row-4: 545px; // lists
 
 .page {
   position: relative;
@@ -14,16 +14,18 @@ $row-4: 476px; // lists
   flex-direction: column;
 
   .content {
-    width: 21cm;
-    height: 29.7cm;
-    border: 1px solid orange;
+    width: 250mm !important;
+    height: 350mm !important;
+    border: 1px solid lightgray;
+    margin: 1rem;
+    position: relative;
 
-    &.fixed {
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-bottom: 1rem;
-      page-break-after: always;
-    }
+    // &.fixed {
+    //   position: relative;
+    //   left: 50%;
+    //   transform: translateX(-50%);
+    //   margin-bottom: 1rem;
+    //   page-break-after: always;
+    // }
   }
 }

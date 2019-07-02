@@ -1,23 +1,61 @@
-@page {
-  margin: 0;
-}
-
 @media print {
-  .navbar {
-    display: none !important;
+  @page {
+    size: 210mm 297mm;
+    /* you can also specify margins here: */
+    margin: 25mm;
+    margin-right: 45mm; /* for compatibility with both A4 and Letter */
   }
+}
+@media print {
+  html,
+  body,
+  .navbar,
   .footer {
-    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    // display: none !important;
+  }
+
+  html,
+  body {
+    // background: green;
+    // width: 210mm !important;
+    // height: 297mm !important;
   }
 
   .page {
+    margin: 0 !important;
+    padding: 0 !important;
     border: none !important;
+    display: block !important;
+    position: unset !important;
+    // width: 100% !important;
+    // height: 100% !important;
+    //background: purple;
     .content {
       border: none !important;
-      &.fixed {
-        margin-bottom: 0 !important;
-        page-break-after: always;
-      }
+      margin: 10mm 8mm !important;
+
+      width: 250mm !important;
+      height: 350mm !important;
+      // size: A4 !important;
+      // background: orange;
+
+      page-break-after: always;
+
+      // &.fixed {
+      //   width: 210mm !important;
+      //   height: 297mm !important;
+      //   margin-bottom: 0 !important;
+      //   display: block !important;
+      //   position: unset !important;
+      //   transform: none !important;
+      //   left: unset !important;
+      //   page-break-after: always;
+
+      //   background: pink;
+      // }
     }
   }
 }

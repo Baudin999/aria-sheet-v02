@@ -16,9 +16,12 @@ export const CharacterSkills = ({ character }) => {
   return (
     <table className="skills list">
       <tbody>
-        {Object.keys(skills).map((key, index) => (
-          <Skill key={index} skill={skills[key]} />
-        ))}
+        {Object.keys(skills)
+          .map(key => skills[key])
+          .sort((a, b) => b.xp - a.xp)
+          .map((skill, index) => (
+            <Skill key={index} skill={skill} />
+          ))}
       </tbody>
       <tfoot>
         <tr>

@@ -36,7 +36,7 @@ export class Nav extends React.Component<INavProps> {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <$Link path="/" currentPath={path} text="Status" />
+            {/* <$Link path="/" currentPath={path} text="Status" /> */}
             <$Link path="/characters" currentPath={path} text="Characters" />
             {selectedCharacter
               ? [
@@ -75,10 +75,16 @@ export class Nav extends React.Component<INavProps> {
                     path={`/character/${selectedCharacter.name}/gear`}
                     currentPath={path}
                     text="Gear"
+                  />,
+                  <$Link
+                    key="specials"
+                    path={`/character/${selectedCharacter.name}/specials`}
+                    currentPath={path}
+                    text="Specials"
                   />
                 ]
               : null}
-            <$Link path="/profile" currentPath={path} text="Profile" />
+            {/* <$Link path="/profile" currentPath={path} text="Profile" /> */}
           </ul>
           <span className="email navbar-text" onClick={logout}>
             {email}

@@ -11,7 +11,7 @@
 .character-xp,
 .character-level {
   position: absolute;
-  left: 250px;
+  left: 300px;
   top: $row-1;
   width: 200px;
   & div {
@@ -23,17 +23,17 @@
   }
 }
 .character-profession {
-  left: 410px;
+  left: 530px;
 }
 .character-xp {
-  left: 650px;
+  left: 800px;
   width: 45px;
   div {
     text-align: center;
   }
 }
 .character-level {
-  left: 690px;
+  left: 850px;
   width: 45px;
   div {
     text-align: center;
@@ -62,7 +62,7 @@
   position: absolute;
   left: $col-4;
   top: $row-3;
-  width: 280px;
+  width: 360px;
 
   td:last-child {
     text-align: left;
@@ -74,7 +74,7 @@
   position: absolute;
   left: $col-4;
   top: 330px;
-  width: 280px;
+  width: 360px;
 
   td:last-child {
     text-align: left;

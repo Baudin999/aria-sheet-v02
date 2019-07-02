@@ -2,9 +2,9 @@ import * as React from "react";
 
 const Special = ({ special }) => {
   return (
-    <tr className="weapon str">
-      <td className="total">
-        {special.name}: {special.description}
+    <tr className="">
+      <td className="">
+        {special.title}: {special.notes}
       </td>
     </tr>
   );
