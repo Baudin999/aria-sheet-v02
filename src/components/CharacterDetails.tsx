@@ -62,8 +62,6 @@ class _CharacterDetails extends React.Component<any, any> {
           </div>
         </Content>
 
-        <Content className="fixed">Spells and stuff</Content>
-
         <Content className="fixed" style={{ padding: "2rem" }}>
           <div style={{ columns: "2", columnGap: "2rem" }}>
             <div style={{ breakInside: "avoid-column" }}>

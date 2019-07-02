@@ -13,7 +13,10 @@ export const CharacterSpells = () => {
         <tbody>
           {spells.map(spell => (
             <tr key={spell.id}>
-              <td style={{ verticalAlign: "top" }}>{spell.title}:</td>
+              <td style={{ verticalAlign: "top" }}>
+                [{spell.rank}/{spell.xp || 0}xp]
+              </td>
+              <td style={{ verticalAlign: "top", fontWeight: "bold" }}>{spell.title}:</td>
               <td>{spell.notes}</td>
             </tr>
           ))}

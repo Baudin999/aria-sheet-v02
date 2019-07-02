@@ -4,6 +4,7 @@ import { Content } from "./snippets/Content";
 import { uuid } from "../services/helpers";
 import { saveCharacter } from "../redux/actions";
 import { StackPanel } from "./snippets/StackPanel";
+import { calculateCharacter } from "../services/calculateCharacter";
 
 export const EditSpells = props => {
   const [selectedSpell, updateSelectedSpell] = React.useState();
@@ -25,7 +26,7 @@ export const EditSpells = props => {
         })
       ]
     };
-    saveCharacter(newCharacter);
+    saveCharacter(calculateCharacter(newCharacter));
   };
 
   const addSpell = () => {

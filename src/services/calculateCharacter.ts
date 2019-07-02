@@ -114,8 +114,6 @@ export const calculateCharacter = character => {
     }
   }
 
-  console.log(character.xp);
-
   // SKILLS
 
   for (let key in character.skills) {
@@ -137,6 +135,13 @@ export const calculateCharacter = character => {
     r.xp = xpLookup[rank];
     character.xp += +r.xp;
   }
+
+  // SPELLS
+  (character.spells || []).forEach(spell => {
+    spell.xp = xpLookup[spell.rank || 0];
+    if (spell.xp === undefined || spell.xp === NaN) spell.xp = 999;
+    character.xp += spell.xp;
+  });
 
   character.level = levelLookup(character.xp);
 
