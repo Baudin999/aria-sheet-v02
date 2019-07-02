@@ -1,6 +1,8 @@
 import { uuid } from "./helpers";
 import * as data from "./data";
 
+console.log(data);
+
 export const createCharacter = template => {
   let newCharacter = {
     id: uuid(),
@@ -280,9 +282,9 @@ const createWeapons = template => {
 };
 
 const createSpecials = (profession, template) => {
-  template.specials = data[profession.toLowerCase() || {}].specials || [];
+  template.specials = (data[profession.toLowerCase()] || {}).specials || [];
 };
 
 const createSpells = (profession, template) => {
-  template.spells = data[profession.toLowerCase() || {}].spells || [];
+  template.spells = (data[profession.toLowerCase()] || {}).spells || [];
 };
