@@ -56,13 +56,23 @@
   left: $col-3;
   top: $row-4;
 }
-
 .weapons.list {
-  border: none;
   position: absolute;
   left: $col-4;
   top: $row-3;
   width: 360px;
+
+  table.list:not(:first-child) {
+    margin-top: 1rem;
+  }
+}
+.list table.list {
+  border: none;
+  position: relative;
+  // left: $col-4;
+  // top: $row-3;
+  // width: 360px;
+  width: 100%;
 
   td:last-child {
     text-align: left;

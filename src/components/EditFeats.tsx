@@ -6,22 +6,7 @@ import { calculateCharacter } from "../services/calculateCharacter";
 import { saveCharacter, selectCharacter } from "../redux/actions";
 
 class _EditFeats extends React.Component<any, any> {
-  state = { character: null };
-  componentDidMount = () => {
-    let character;
-    if (this.props.selectedCharacter) {
-      character = this.props.selectedCharacter;
-    } else {
-      let characterName = this.props.match.params.name;
-      character = this.props.characters.find(c => c.name === characterName);
-      if (character) selectCharacter(character);
-    }
-
-    this.setState({
-      character: JSON.parse(JSON.stringify(character))
-    });
-  };
-  submit = ({ formData }) => {};
+  state = { character: this.props.selectedCharacter };
 
   changeRank = title => e => {
     let value = +e.target.value;
@@ -84,35 +69,3 @@ class _EditFeats extends React.Component<any, any> {
 }
 
 export const EditFeats = connect(s => s)(_EditFeats);
-
-{
-  /* 
-<div>
-            <ul>
-              {Object.keys(character.feats).map((key, index) => {
-                let feat = character.feats[key];
-                return (
-                  <li key={feat.title} onClick={() => this.selectFeat(feat)}>
-                    {feat.title}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          {selectedFeat && (
-            <Form
-              schema={editFeat}
-              uiSchema={editFeatUiSchema}
-              onSubmit={this.submit}
-              formData={selectedFeat}
-            />
-          )}
-        </StackPanel> 
-        <Form
-            schema={editFeat}
-            uiSchema={editFeatUiSchema}
-            onSubmit={this.submit}
-            formData={Object.keys(character.feats).map(k => character.feats[k])}
-          />
-          */
-}

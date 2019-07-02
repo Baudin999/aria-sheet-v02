@@ -29,34 +29,34 @@ export const SelectBonusItem = ({ character, ...props }) => (
 );
 
 export const Bonusses = ({ item, deleteBonus }) => {
-  let invalidKeys = [
-    "id",
-    "title",
-    "description",
-    "dmg",
-    "numberOfDice",
-    "diceSides",
-    "constant",
-    "active",
-    "stat",
-    "type",
-    "notes"
-  ];
-  if (Object.keys(item).filter(key => invalidKeys.indexOf(key) === -1).length === 0) {
+  // let invalidKeys = [
+  //   // "id",
+  //   // "title",
+  //   // "description",
+  //   // "dmg",
+  //   // "numberOfDice",
+  //   // "diceSides",
+  //   // "constant",
+  //   // "active",
+  //   // "stat",
+  //   // "type",
+  //   // "notes",
+  //   // "location"
+  // ];
+  let keys = Object.keys(item).filter(key => key[0] === key[0].toUpperCase());
+  if (keys.length === 0) {
     return <div>No bonusses on your weapon</div>;
   }
   return (
     <div>
-      {Object.keys(item)
-        .filter(key => invalidKeys.indexOf(key) === -1)
-        .map((bonus, i) => {
-          return (
-            <div key={i} className="stand-out-1 bonus-row" onClick={() => deleteBonus(bonus)}>
-              <FontAwesomeIcon icon="trash-alt" style={{ marginRight: "10px" }} /> {bonus} -{" "}
-              {item[bonus]}
-            </div>
-          );
-        })}
+      {keys.map((bonus, i) => {
+        return (
+          <div key={bonus} className="stand-out-1 bonus-row" onClick={() => deleteBonus(bonus)}>
+            <FontAwesomeIcon icon="trash-alt" style={{ marginRight: "10px" }} /> {bonus} -{" "}
+            {item[bonus]}
+          </div>
+        );
+      })}
     </div>
   );
 };

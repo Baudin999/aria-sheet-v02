@@ -14,7 +14,7 @@ export const CharacterWeapons = ({ character }) => {
   let { weapons } = character;
 
   return (
-    <table className="weapons list">
+    <table className="list">
       <thead>
         <tr>
           <th>Weapons</th>

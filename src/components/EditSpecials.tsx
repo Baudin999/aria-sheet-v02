@@ -9,13 +9,12 @@ import { SpecialList } from "./SpecialList";
 import { saveCharacter } from "../redux/actions";
 
 class _EditSpecials extends React.Component<any, any> {
-  state = { character: null, selectedSpecial: null };
-  componentDidMount = () => {
-    setCharacter(this.props, this);
+  state = {
+    character: this.props.selectedCharacter,
+    selectedSpecial: null
   };
 
   selectSpecial = special => {
-    console.log("Selecting Special");
     this.setState({
       ...this.state,
       selectedSpecial: special

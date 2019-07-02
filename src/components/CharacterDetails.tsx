@@ -20,6 +20,8 @@ import { SkillDetails } from "./SkillDetails";
 import { StatDetails } from "./StatDetails";
 import { WeaponsDetails } from "./WeaponsDetails";
 import { ResistancesDetails } from "./ResistancesDetails";
+import { GearOverview } from "./GearOverview";
+import { CharacterDetailsGear } from "./CharacterDetailsGear";
 
 class _CharacterDetails extends React.Component<any, any> {
   render() {
@@ -51,8 +53,11 @@ class _CharacterDetails extends React.Component<any, any> {
           <CharacterSkills character={character} />
           <CharacterFeats character={character} />
           <CharacterResistances character={character} />
-          <CharacterWeapons character={character} />
-          <CharacterSpecials character={character} />
+          <div className="weapons list">
+            <CharacterWeapons character={character} />
+            <CharacterDetailsGear />
+            <CharacterSpecials character={character} />
+          </div>
         </Content>
 
         <Content className="fixed">Spells and stuff</Content>
@@ -68,6 +73,8 @@ class _CharacterDetails extends React.Component<any, any> {
             <div>
               <h2>Weapons Details</h2>
               <WeaponsDetails character={character} />
+              <h2>Gear Details</h2>
+              <GearOverview />
             </div>
           </div>
           <h2>Resistances</h2>

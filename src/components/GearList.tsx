@@ -4,8 +4,8 @@ export const GearList = ({ gear, addGear, selectGear }) => {
   return (
     <div className="master">
       <ul>
-        {gear.map($gear => (
-          <li className="stand-out-1" key={$gear.id} onClick={() => selectGear($gear)}>
+        {gear.map(($gear, i) => (
+          <li className="stand-out-1" key={$gear.id || i} onClick={() => selectGear($gear)}>
             {$gear.title} - {$gear.description}
           </li>
         ))}

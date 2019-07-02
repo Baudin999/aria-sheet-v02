@@ -41,7 +41,7 @@ class _Characters extends React.Component<any> {
     if (!this.props.characters) return null;
     let { characters } = this.props;
     return (
-      <div className="content">
+      <div className="content" style={{ padding: "1rem" }}>
         <div className="card-columns">
           {characters.map(c => (
             <CharacterListCard key={c.name} character={c} />

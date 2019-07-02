@@ -14,7 +14,7 @@ export const CharacterSpecials = ({ character }) => {
   let { specials = [] } = character;
 
   return (
-    <table className="specials list">
+    <table className="list">
       <thead>
         <tr>
           <th>Specials</th>

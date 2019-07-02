@@ -56,6 +56,17 @@ export const getCharacters = (uid: string) => {
           type: Events.CHARACTERS_GOTTEN,
           payload: characters
         });
+
+        let params = window.location.pathname.split("/").map(k => k.replace("/", ""));
+        if (params.length > 2) {
+          let character = characters.find(c => c.name === params[2]);
+          if (character) {
+            dispatch({
+              type: "CHARACTER_SELECTED",
+              payload: character
+            });
+          }
+        }
       } catch (err) {
         console.log(err);
       }

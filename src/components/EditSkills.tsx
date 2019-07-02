@@ -6,21 +6,7 @@ import { calculateCharacter } from "../services/calculateCharacter";
 import { saveCharacter, selectCharacter } from "../redux/actions";
 
 class _EditSkills extends React.Component<any, any> {
-  state = { character: null };
-  componentDidMount = () => {
-    let character;
-    if (this.props.selectedCharacter) {
-      character = this.props.selectedCharacter;
-    } else {
-      let characterName = this.props.match.params.name;
-      character = this.props.characters.find(c => c.name === characterName);
-      if (character) selectCharacter(character);
-    }
-
-    this.setState({
-      character: JSON.parse(JSON.stringify(character))
-    });
-  };
+  state = { character: this.props.selectedCharacter };
 
   changeRank = (title, prop) => e => {
     let value = e.target.checked;

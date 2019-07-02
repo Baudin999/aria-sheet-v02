@@ -1,5 +1,6 @@
-import { Events } from "./actions";
+import React from "react";
 import { ICharacter } from "../interfaces";
+import { CharacterContext } from "../services/characterContext";
 
 let defaultState: IState = {};
 
@@ -47,6 +48,8 @@ export const reducer = (state = defaultState, action) => {
         characters: (state.characters || []).filter(c => c.name !== action.payload.name)
       };
     case "CHARACTER_SELECTED":
+      (CharacterContext as any)._currentValue.character = action.payload;
+      // debugger;
       return {
         ...state,
         selectedCharacter: action.payload

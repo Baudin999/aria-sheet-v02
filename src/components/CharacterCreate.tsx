@@ -29,7 +29,8 @@ export class CharacterCreate extends React.Component<any, any> {
     newCharacter = calculateCharacter(newCharacter);
 
     // save the new character
-    saveCharacter(newCharacter).then(() => {
+    saveCharacter(newCharacter);
+    setTimeout(() => {
       this.props.history.push("/characters");
     });
   };
