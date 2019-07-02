@@ -120,8 +120,15 @@ export class WeaponDetails extends React.Component<any, any> {
               <option value="Finesse">Finesse</option>
             </select>
           </div>
-        </div>
-        <div>
+          <div className="form-group">
+            <label>Initiative: </label>
+            <input
+              className="form-control"
+              value={weapon.initiative}
+              type="number"
+              onChange={e => this.changeVal("initiative", +e.target.value)}
+            />
+          </div>
           <div className="form-group">
             <label>Is Active: </label>
             <input

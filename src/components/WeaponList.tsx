@@ -12,7 +12,7 @@ export const WeaponList = ({ weapons, addWeapon, selectWeapon, selectedWeapon })
             }
             key={weapon.id}
             onClick={() => selectWeapon(weapon)}>
-            {weapon.title} - {weapon.description}
+            {weapon.title} - {weapon.description} - {weapon.initiative || 10} INI
           </li>
         ))}
       </ul>

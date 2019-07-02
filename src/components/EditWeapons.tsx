@@ -43,7 +43,8 @@ class _EditWeapons extends React.Component<any, any> {
       title: "Dagger",
       description: "1d4+1",
       type: "Melee",
-      stat: "str"
+      stat: "str",
+      initiative: 10
     };
     this.setState({
       ...this.state,
@@ -60,7 +61,7 @@ class _EditWeapons extends React.Component<any, any> {
     if (!character) return null;
 
     return (
-      <Content className="fixed character-create">
+      <Content className="fixed character-create" style={{ margin: "1rem" }}>
         <div>Character Total XP: {character.xp}</div>
         <div>Character Level: {character.level}</div>
         <StackPanel>

@@ -3,7 +3,7 @@ import { CharacterContext } from "../services/characterContext";
 
 export const CharacterSpells = () => {
   let { character } = React.useContext(CharacterContext);
-  let { spells } = character;
+  let { spells = [] } = character;
 
   return (
     <div className="spells">
