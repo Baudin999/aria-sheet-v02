@@ -123,7 +123,12 @@ export const calculateCharacter = character => {
       case "AP":
         character.ap = feat.description;
       case "Movement":
-        character.movement = feat.description;
+        character.movement = 10 + feat.result;
+        console.log(character.movement);
+        break;
+      case "Initiative":
+        character.initiative = 10 + feat.result;
+        character.initiativeModifier = feat.result * -1;
         break;
     }
   }

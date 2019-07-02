@@ -16,7 +16,7 @@ export const CharacterDetailsGear = () => {
         {gear.map((g, i) => (
           <tr key={g.id || i} className="weapon str">
             <td className="total">
-              {g.title}: {g.description}
+              <span style={{ fontWeight: "bold" }}>{g.title}:</span> {g.description}
             </td>
           </tr>
         ))}

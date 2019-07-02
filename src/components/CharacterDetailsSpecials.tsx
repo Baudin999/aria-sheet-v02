@@ -4,7 +4,7 @@ const Special = ({ special }) => {
   return (
     <tr className="">
       <td className="">
-        [{special.rank}/{special.xp}xp]
+        [{special.rank || 0}/{special.xp}xp]
         <span style={{ display: "inline-block", marginLeft: "5px", fontWeight: "bold" }}>
           {special.title}
         </span>
