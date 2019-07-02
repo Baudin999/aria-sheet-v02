@@ -21,6 +21,7 @@ export const reducer = (state = defaultState, action) => {
       };
     case "CHARACTER_CREATED":
       let found = false;
+      (CharacterContext as any)._currentValue.character = action.payload;
       let characters = (state.characters || []).map(c => {
         if (c.name === action.payload.name) {
           found = true;

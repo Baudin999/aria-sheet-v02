@@ -35,6 +35,8 @@ ul {
   }
 }
 
-textarea {
-  height: 150px;
+.form-group {
+  textarea.form-control {
+    height: 300px;
+  }
 }

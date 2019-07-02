@@ -81,8 +81,8 @@ export class SpecialDetails extends React.Component<any, any> {
     let { character, special } = this.props;
     if (!special) return null;
     return (
-      <div>
-        <div style={{ width: "700px" }}>
+      <div style={{ width: "700px" }}>
+        <div style={{ columns: 2 }}>
           <div className="form-group">
             <label>Special title: </label>
             <input
@@ -91,8 +91,15 @@ export class SpecialDetails extends React.Component<any, any> {
               onChange={e => this.changeText("title", e.target.value)}
             />
           </div>
-        </div>
-        <div>
+          <div className="form-group">
+            <label>XP value of special: </label>
+            <input
+              className="form-control"
+              type="number"
+              value={special.xpValue || 0}
+              onChange={e => this.changeVal("xpValue", +e.target.value)}
+            />
+          </div>
           <div className="form-group">
             <label>Is Active: </label>
             <input
@@ -102,11 +109,21 @@ export class SpecialDetails extends React.Component<any, any> {
               onChange={e => this.changeBoolean("active", e.target.checked)}
             />
           </div>
+          <div className="form-group">
+            <label>Rank: </label>
+            <input
+              className="form-control"
+              type="number"
+              value={special.rank || 0}
+              onChange={e => this.changeVal("rank", +e.target.value)}
+            />
+          </div>
         </div>
         <div>
           <div className="form-group">
             <label>Description: </label>
             <textarea
+              style={{ height: "300px" }}
               className="form-control"
               value={special.notes || ""}
               onChange={e => this.changeText("notes", e.target.value)}

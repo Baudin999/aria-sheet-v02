@@ -53,6 +53,7 @@ export const calculateCharacter = character => {
   (character.specials || [])
     .filter(g => g.active)
     .forEach(g => {
+      character.xp += g.xpValue || 0;
       for (var key in g) {
         character.feats[key] ? (character.feats[key].specials += g[key]) : undefined;
         character.stats[key] ? (character.stats[key].specials += g[key]) : undefined;

@@ -1,12 +1,14 @@
 import { uuid } from "./helpers";
+import * as data from "./data";
 
 export const createCharacter = template => {
-  console.log(template);
   let newCharacter = {
     id: uuid(),
     name: template.name,
     xp: 0,
-    level: 0
+    level: 0,
+    spells: [],
+    specials: []
   };
   createStatistics(newCharacter);
   createSecundaryStatistics(newCharacter);
@@ -17,8 +19,8 @@ export const createCharacter = template => {
   createResistances(newCharacter);
   createGear(newCharacter);
   createWeapons(newCharacter);
-  createSpecials(newCharacter);
-  createSpells(newCharacter);
+  createSpecials(template.profession, newCharacter);
+  createSpells(template.profession, newCharacter);
 
   return newCharacter;
 };
@@ -277,10 +279,10 @@ const createWeapons = template => {
   ];
 };
 
-const createSpecials = template => {
-  template.specials = [];
+const createSpecials = (profession, template) => {
+  template.specials = data[profession.toLowerCase() || {}].specials || [];
 };
 
-const createSpells = template => {
-  template.spells = [];
+const createSpells = (profession, template) => {
+  template.spells = data[profession.toLowerCase() || {}].spells || [];
 };

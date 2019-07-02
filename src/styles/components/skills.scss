@@ -90,3 +90,13 @@
     text-align: left;
   }
 }
+
+.spells {
+  position: absolute;
+  top: $row-5;
+  margin: 1.5rem;
+
+  td:first-child {
+    width: 170px;
+  }
+}

@@ -13,8 +13,8 @@ export const CharacterDetailsGear = () => {
         </tr>
       </thead>
       <tbody>
-        {gear.map(g => (
-          <tr className="weapon str">
+        {gear.map((g, i) => (
+          <tr key={g.id || i} className="weapon str">
             <td className="total">
               {g.title}: {g.description}
             </td>

@@ -1,0 +1,24 @@
+import * as React from "react";
+import { CharacterContext } from "../services/characterContext";
+
+export const CharacterSpells = () => {
+  let { character } = React.useContext(CharacterContext);
+  let { spells } = character;
+
+  return (
+    <div className="spells">
+      <h2>Spells</h2>
+      <hr />
+      <table>
+        <tbody>
+          {spells.map(spell => (
+            <tr key={spell.id}>
+              <td style={{ verticalAlign: "top" }}>{spell.title}:</td>
+              <td>{spell.notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
