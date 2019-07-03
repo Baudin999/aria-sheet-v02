@@ -2,6 +2,7 @@ import { dispatch, getState } from "./store";
 import * as firebase from "firebase";
 import { logout as fbLogout, createUserWithEmailAndPassword } from "./../services/_firebase";
 import { debounce } from "../services/helpers";
+import { calculateCharacter } from "../services/calculateCharacter";
 
 export enum Events {
   USER_LOGGED_IN = "USER_LOGGED_IN",
@@ -104,7 +105,7 @@ export const deleteCharacter = character => () => {
 };
 
 export const selectCharacter = character => {
-  console.log("Selecting character", character);
+  calculateCharacter(character);
   dispatch({
     type: Events.CHARACTER_SELECTED,
     payload: character

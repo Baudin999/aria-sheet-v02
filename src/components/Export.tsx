@@ -17,6 +17,16 @@ export const ExportCharacter = () => {
     }
   };
 
+  function download() {
+    var dataStr = "data:text/json;charset=utf-8," + characterJSON;
+    var downloadAnchorNode = document.createElement("a");
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", character.name + ".json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
+
   return (
     <div>
       <textarea
@@ -27,6 +37,9 @@ export const ExportCharacter = () => {
       <div>
         <button className="btn btn-warning" onClick={save}>
           Save {character.name}
+        </button>
+        <button className="btn btn-warning" onClick={download}>
+          Download {character.name}
         </button>
       </div>
     </div>

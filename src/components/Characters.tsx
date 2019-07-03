@@ -42,7 +42,7 @@ class _Characters extends React.Component<any> {
     let { characters } = this.props;
     return (
       <div className="content" style={{ padding: "1rem" }}>
-        <div className="card-columns">
+        <div className="card-columns" style={{ columnFill: "balance" }}>
           {characters.map(c => (
             <CharacterListCard key={c.name} character={c} />
           ))}
