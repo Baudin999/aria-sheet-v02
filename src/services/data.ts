@@ -72,3 +72,17 @@ export const barbarian = {
     createSpell("Charger", "Take -10 to your skill but if you hit you do +10 DMG, must be running.")
   ]
 };
+
+export const priest = {
+  spells: [
+    createSpell("Haste", "Grant a target +5 INI for their next round. (10 INI to cast)"),
+    createSpell("Heal", "Heal a target for Inate Health, 15 INI cast."),
+    createSpell("Cleanse", "Remove one staus effect from a target (ex: Fatigue, Cold)")
+  ],
+  specials: [
+    createSpell(
+      "Power Words",
+      "You can cast Power Words. They cost 3 INI to cast. Only one Power Word can be active on a target."
+    )
+  ]
+};

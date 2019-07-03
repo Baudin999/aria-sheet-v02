@@ -12,7 +12,7 @@ let d = (w, character) => {
     case "Finesse":
       return character.skills["Weapon Skill"].description;
     case "Unarmed":
-      return character.skills["Weapon Skill"].description;
+      return character.skills["Unarmed Combat"].description;
     default:
       return character.skills["Weapon Skill"].description;
   }
@@ -22,8 +22,8 @@ const Weapon = ({ weapon, character }) => {
   return (
     <tr className="weapon str">
       <td className="total">
-        <span style={{ fontWeight: "bold" }}>{weapon.title}:</span> {weapon.description} -{" "}
-        {weapon.initiative || 10} INI; {d(weapon, character)}
+        <span style={{ fontWeight: "bold" }}>{weapon.title}:</span>
+        DMG: {weapon.description}; INI: {weapon.initiative || 10}; SKILL: {d(weapon, character)}
       </td>
     </tr>
   );
