@@ -10,7 +10,7 @@ export const SpecialsInfo = () => {
         return (
           <tr key={special.id}>
             <td>{special.title}</td>
-            <td style={{ textAlign: "center" }}>{special.xp + special.xpValue}</td>
+            <td style={{ textAlign: "center" }}>{special.xp + (special.xpValue || 0)}</td>
             <td style={{ textAlign: "right" }}>{special.description}</td>
           </tr>
         );

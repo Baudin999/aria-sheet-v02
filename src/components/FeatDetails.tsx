@@ -1,6 +1,7 @@
 import * as React from "react";
 
 export const FeatDetails = ({ character }) => {
+  let feats = Object.keys(character.feats).map(featName => character.feats[featName]);
   let Details = () => (
     <tbody>
       {Object.keys(character.feats).map(featName => {
@@ -23,6 +24,17 @@ export const FeatDetails = ({ character }) => {
           </tr>
         );
       })}
+      <tr style={{ fontWeight: "bold" }}>
+        <td>Totals</td>
+        <td />
+        <td />
+        <td />
+        <td />
+        <td />
+        <td />
+        <td>{feats.reduce((acc, f) => acc + f.xp, 0)}xp</td>
+        <td />
+      </tr>
     </tbody>
   );
 
