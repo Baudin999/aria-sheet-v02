@@ -39,9 +39,10 @@ class _Characters extends React.Component<any> {
   }
   render() {
     if (!this.props.characters) return null;
-    let { characters } = this.props;
+    let { characters, user } = this.props;
     return (
       <div className="content" style={{ padding: "1rem" }}>
+        <SelectUserCharacters user={user} />
         <div className="card-columns" style={{ columnFill: "balance" }}>
           {characters.map(c => (
             <CharacterListCard key={c.name} character={c} />
@@ -52,6 +53,22 @@ class _Characters extends React.Component<any> {
     );
   }
 }
+
+const SelectUserCharacters = ({ user }) => {
+  let [uid, changeUID] = React.useState("");
+  if (!user || user.email !== "foo@bar.com") return null;
+  return (
+    <div>
+      <div className="form-group">
+        <label>Load player characters by UID</label>
+        <input className="form-control" value={uid} onChange={e => changeUID(e.target.value)} />
+        <button className="btn btn-warning" onClick={() => getCharacters(uid)}>
+          Retrieve Characters
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export const Characters = connect((s: any) => ({
   characters: s.characters,

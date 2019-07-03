@@ -77,9 +77,11 @@ export const getCharacters = (uid: string) => {
 export const saveCharacter = debounce(character => {
   let { user } = getState();
   if (!user) throw "Hey! quit hacking and leave this game alone!";
+  if (!character.uid) character.uid = user.uid;
+  character.lastUpdated = new Date();
   return firebase
     .database()
-    .ref(`${user.uid}/characters/${character.name}`)
+    .ref(`${character.uid}/characters/${character.name}`)
     .set(character)
     .then(() => {
       dispatch({
@@ -92,6 +94,8 @@ export const saveCharacter = debounce(character => {
 export const deleteCharacter = character => () => {
   let { user } = getState();
   if (!user) throw "Hey! quit hacking and leave this game alone!";
+  if (user.uid !== character.uid)
+    throw "Hey, you are not allowed to delete other people's characters.";
   return firebase
     .database()
     .ref(`${user.uid}/characters/${character.name}`)
@@ -105,7 +109,7 @@ export const deleteCharacter = character => () => {
 };
 
 export const selectCharacter = character => {
-  calculateCharacter(character);
+  if (character) calculateCharacter(character);
   dispatch({
     type: Events.CHARACTER_SELECTED,
     payload: character

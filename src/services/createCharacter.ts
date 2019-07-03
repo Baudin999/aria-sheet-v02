@@ -1,5 +1,5 @@
 import { uuid } from "./helpers";
-import * as data from "./data";
+import data from "./data";
 
 console.log(data);
 
@@ -346,9 +346,9 @@ const createWeapons = template => {
 };
 
 const createSpecials = (profession, template) => {
-  template.specials = (data[profession.toLowerCase()] || {}).specials || [];
+  template.specials = (data[profession] || {}).specials || [];
 };
 
 const createSpells = (profession, template) => {
-  template.spells = (data[profession.toLowerCase()] || {}).spells || [];
+  template.spells = (data[profession] || {}).spells || [];
 };
