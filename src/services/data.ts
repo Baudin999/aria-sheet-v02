@@ -77,7 +77,16 @@ export const priest = {
   spells: [
     createSpell("Haste", "Grant a target +5 INI for their next round. (10 INI to cast)"),
     createSpell("Heal", "Heal a target for Inate Health, 15 INI cast."),
-    createSpell("Cleanse", "Remove one staus effect from a target (ex: Fatigue, Cold)")
+    createSpell("Cleanse", "Remove one staus effect from a target (ex: Fatigue, Cold)"),
+    createSpell(
+      "Revive",
+      "Bring a character back to life if they have not been dead for more than 3 rounds."
+    ),
+    createSpell(
+      "Aura",
+      "Grants +10 Aura to one target, takes all of your INI and concentration. THe aura will be active while you concentrate. Casting a spell or doing another combat action will break the Aura."
+    ),
+    createSpell("Bane", "1d20 + DMG to demons and undead. 10 INI.")
   ],
   specials: [
     createSpell(

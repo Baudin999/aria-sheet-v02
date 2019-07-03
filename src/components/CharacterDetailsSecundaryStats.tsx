@@ -12,6 +12,8 @@ const Statistic = ({ title, value }) => {
 export const CharacterDetailsSecundaryStats = ({ character }) => {
   let { stats } = character;
 
+  let apTitle = character.profesion.name === "Monk" ? "Chi" : "AP";
+
   return (
     <div className="secundary-statistics">
       <Statistic title="HP" value={character.hp} />
@@ -21,7 +23,7 @@ export const CharacterDetailsSecundaryStats = ({ character }) => {
       <Statistic title="Movement" value={character.movement} />
       <Statistic title="Initiative" value={character.initiative} />
       <Statistic title="Ini Modif." value={character.initiativeModifier} />
-      <Statistic title="AP" value={character.ap} />
+      <Statistic title={apTitle} value={character.ap} />
       <Statistic title="In. Heal." value={character.inateHealing} />
     </div>
   );
