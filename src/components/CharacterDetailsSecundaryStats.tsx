@@ -12,7 +12,7 @@ const Statistic = ({ title, value }) => {
 export const CharacterDetailsSecundaryStats = ({ character }) => {
   let { stats } = character;
 
-  let apTitle = character.profesion.name === "Monk" ? "Chi" : "AP";
+  let apTitle = character.profession.name === "Monk" ? "Chi" : "AP";
 
   return (
     <div className="secundary-statistics">
