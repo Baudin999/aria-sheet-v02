@@ -130,7 +130,7 @@ export const calculateCharacter = character => {
         character.movement = 10 + feat.result;
         break;
       case "Initiative":
-        character.initiative = 10 + feat.result;
+        character.initiative = 16 + feat.result;
         character.initiativeModifier = feat.result * -1;
         break;
     }
