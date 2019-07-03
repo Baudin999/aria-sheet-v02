@@ -65,6 +65,7 @@ export default {
   ["Barbarian"]: {
     spells: [],
     specials: [
+      createSpell("Critical Mass", "Every time you crit heal a target for 1d8"),
       createSpell("Rage", "Every time you loose 10 HP you gain +1 DMG."),
       createSpell("Bleed", "Every Action Point does 1d4 DMG instead of 1 DMG."),
       createSpell("Revenge", "Whenever you get hit, retalliate with 1d4 DMG."),
@@ -104,6 +105,7 @@ export default {
       createSpell("Power Word Shield", "Increase a target's Armor by 1d4 for one round.")
     ],
     specials: [
+      createSpell("Critical Mass", "Every time you crit heal a target for 1d8"),
       createSpell(
         "Power Words",
         "You can cast Power Words. They cost 3 INI and 3 AP to cast. Only one Power Word can be active on a target."
