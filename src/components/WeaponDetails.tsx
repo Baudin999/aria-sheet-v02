@@ -49,7 +49,7 @@ export class WeaponDetails extends React.Component<any, any> {
     let { changeWeapon, weapon } = this.props;
     weapon[title] = val;
 
-    if (val) {
+    if (val || val === 0) {
       changeWeapon(weapon);
     }
   };

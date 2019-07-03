@@ -67,7 +67,6 @@ export const calculateCharacter = character => {
     .map(calculateDescription)
     .filter(g => g.active)
     .forEach(g => {
-      character.xp += g.xpValue || 0;
       for (var key in g) {
         character.feats[key] ? (character.feats[key].specials += g[key]) : undefined;
         character.stats[key] ? (character.stats[key].specials += g[key]) : undefined;
@@ -80,7 +79,8 @@ export const calculateCharacter = character => {
 
   for (let key in character.stats) {
     let stat = character.stats[key];
-    stat.total = stat.race + stat.prof + stat.gear + stat.weapons + stat.specials;
+    stat.start = 5;
+    stat.total = stat.start + stat.race + stat.prof + stat.gear + stat.weapons + stat.specials;
     stat.result = Math.round(stat.total / 10);
   }
 
@@ -108,6 +108,9 @@ export const calculateCharacter = character => {
     } else if (feat.title === "Crit DMG" || feat.title === "Spash DMG") {
       feat.result = feat.totalRank * feat.factor;
       feat.description = `${feat.result}d4`;
+    } else if (feat.title === "AP") {
+      feat.result = feat.totalRank + 3;
+      feat.description = `${feat.result} p/r`;
     } else {
       feat.result = feat.totalRank * feat.factor;
       feat.description = `${feat.prefix}${feat.result}${feat.postfix}`;
@@ -122,9 +125,9 @@ export const calculateCharacter = character => {
         break;
       case "AP":
         character.ap = feat.description;
+        break;
       case "Movement":
         character.movement = 10 + feat.result;
-        console.log(character.movement);
         break;
       case "Initiative":
         character.initiative = 10 + feat.result;

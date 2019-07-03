@@ -33,7 +33,7 @@ export class GearDetails extends React.Component<any, any> {
     let { changeGear, gear } = this.props;
     gear[title] = val;
 
-    if (val) {
+    if (val || val === 0) {
       changeGear(gear);
     }
   };
@@ -176,7 +176,6 @@ export class GearDetails extends React.Component<any, any> {
               <input
                 className="form-control"
                 type="number"
-                min="0"
                 value={this.state.value}
                 onChange={e => this.changeValue(+e.target.value)}
               />

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { CharacterContext } from "../services/characterContext";
 
-export const GearOverview = props => {
+export const GearInfo = props => {
   let { character } = React.useContext(CharacterContext);
   if (!character) return null;
 

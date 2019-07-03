@@ -35,6 +35,7 @@ class _EditGears extends React.Component<any, any> {
       selectedGear: $gear
     });
   };
+  
   deleteGear = g => {
     let newCharacter = calculateCharacter({
       ...this.state.character,

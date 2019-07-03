@@ -1,6 +1,9 @@
 import * as React from "react";
+import { CharacterContext } from "../services/characterContext";
 
-export const WeaponsDetails = ({ character }) => {
+export const WeaponsInfo = () => {
+  let { character } = React.useContext(CharacterContext);
+  if (!character) return null;
   let invalidKeys = [
     "id",
     "title",
@@ -21,7 +24,7 @@ export const WeaponsDetails = ({ character }) => {
         return (
           <tr key={weapon.id}>
             <td>{weapon.title}</td>
-            <td>{weapon.stat}</td>
+            <td>{weapon.stat.toUpperCase()}</td>
             <td>
               {Object.keys(weapon)
                 .filter(key => invalidKeys.indexOf(key) === -1)

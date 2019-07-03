@@ -8,6 +8,9 @@ export const StatDetails = ({ character }) => {
         return (
           <tr key={stat.title}>
             <td>{stat.title}</td>
+            <td style={{ textAlign: "center" }}>{stat.start}</td>
+            <td style={{ textAlign: "center" }}>{stat.race}</td>
+            <td style={{ textAlign: "center" }}>{stat.prof}</td>
             <td style={{ textAlign: "center" }}>{stat.gear}</td>
             <td style={{ textAlign: "center" }}>{stat.weapons}</td>
             <td style={{ textAlign: "center" }}>{stat.specials}</td>
@@ -24,9 +27,12 @@ export const StatDetails = ({ character }) => {
       <thead>
         <tr>
           <th>Title</th>
+          <th style={{ textAlign: "center" }}>Start</th>
+          <th style={{ textAlign: "center" }}>Race</th>
+          <th style={{ textAlign: "center" }}>Prof</th>
           <th style={{ textAlign: "center" }}>Gear</th>
-          <th style={{ textAlign: "center" }}>Weapons</th>
-          <th style={{ textAlign: "center" }}>Specials</th>
+          <th style={{ textAlign: "center" }}>Weap.</th>
+          <th style={{ textAlign: "center" }}>Spec.</th>
           <th style={{ textAlign: "center" }}>Total</th>
           <th style={{ textAlign: "right" }}>Result</th>
         </tr>

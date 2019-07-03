@@ -18,11 +18,12 @@ import { selectCharacter } from "../redux/actions";
 import { FeatDetails } from "./FeatDetails";
 import { SkillDetails } from "./SkillDetails";
 import { StatDetails } from "./StatDetails";
-import { WeaponsDetails } from "./WeaponsDetails";
+import { WeaponsInfo } from "./WeaponsInfo";
 import { ResistancesDetails } from "./ResistancesDetails";
-import { GearOverview } from "./GearOverview";
+import { GearInfo } from "./GearInfo";
 import { CharacterDetailsGear } from "./CharacterDetailsGear";
 import { CharacterSpells } from "./CharacterDetailsSpells";
+import { SpecialsInfo } from "./SpecialsInfo";
 
 class _CharacterDetails extends React.Component<any, any> {
   render() {
@@ -56,7 +57,7 @@ class _CharacterDetails extends React.Component<any, any> {
           <CharacterResistances character={character} />
           <CharacterSpells />
           <div className="weapons list">
-            <CharacterWeapons character={character} />
+            <CharacterWeapons />
             <CharacterDetailsGear />
             <CharacterSpecials character={character} />
           </div>
@@ -72,9 +73,11 @@ class _CharacterDetails extends React.Component<any, any> {
             </div>
             <div>
               <h2>Weapons Details</h2>
-              <WeaponsDetails character={character} />
+              <WeaponsInfo />
               <h2>Gear Details</h2>
-              <GearOverview />
+              <GearInfo />
+              <h2>Specials Overview</h2>
+              <SpecialsInfo />
             </div>
           </div>
           <h2>Resistances</h2>
