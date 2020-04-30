@@ -30,7 +30,7 @@
     "bootstrap": "^4.3.1",
     "firebase": "^5.10.1",
     "http2": "^3.3.7",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
